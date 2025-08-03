@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Borham - DevOps & Cloud Engineer Portfolio</title>
+    <title>Muhammad Borham - DevOps & Cloud Engineer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -61,13 +61,35 @@
         .skill-chip { display: inline-block; padding: 0.5rem 1rem; margin: 0.25rem; border: 1px solid #FFFFFF; border-radius: 9999px; font-size: 0.875rem; }
         .contact-icon { transition: color 0.3s ease; }
         .contact-icon:hover { color: #CCCCCC; }
+        .hero-section {
+            background-image: url('images/360_F_1519107466_ZdPwP7lRWomGzP4shSrUKbXRWBVGFGyU.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+        .hero-section > * {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 <body class="smooth-scroll">
     <!-- Navigation -->
     <nav class="bg-black text-white fixed w-full top-0 z-10 shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Mohammed Borham</h1>
+            <h1 class="text-xl font-bold">Muhammad Borham</h1>
             <ul class="flex space-x-6">
                 <li><a href="#about" class="nav-link hover:text-gray-300">About</a></li>
                 <li><a href="#resume" class="nav-link hover:text-gray-300">Resume</a></li>
@@ -79,7 +101,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-black text-white py-20 mt-16 fade-in">
+    <section class="hero-section text-white py-20 mt-16 fade-in">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">DevOps & Cloud Engineer</h1>
             <p class="text-lg md:text-xl mb-6">Building scalable, automated, and secure cloud infrastructure.</p>
@@ -184,17 +206,17 @@
                 <div class="bg-black border border-white p-6 rounded-lg hover-scale">
                     <h3 class="text-xl font-semibold mb-2">CI/CD Pipeline for Microservices</h3>
                     <p class="text-gray-400 mb-4">Built a CI/CD pipeline using Jenkins, Docker, and AWS ECS to deploy a microservices-based application.</p>
-                    <a href="https://github.com/mohammed-borham/project1" class="text-white hover:underline">View on GitHub</a>
+                    <a href="https://github.com/muhammadborham/project1" class="text-white hover:underline">View on GitHub</a>
                 </div>
                 <div class="bg-black border border-white p-6 rounded-lg hover-scale">
                     <h3 class="text-xl font-semibold mb-2">Serverless Web App</h3>
                     <p class="text-gray-400 mb-4">Developed a serverless web application using AWS Lambda, API Gateway, and DynamoDB.</p>
-                    <a href="https://github.com/mohammed-borham/project2" class="text-white hover:underline">View on GitHub</a>
+                    <a href="https://github.com/muhammadborham/project2" class="text-white hover:underline">View on GitHub</a>
                 </div>
                 <div class="bg-black border border-white p-6 rounded-lg hover-scale">
                     <h3 class="text-xl font-semibold mb-2">Kubernetes Cluster Setup</h3>
                     <p class="text-gray-400 mb-4">Configured a highly available Kubernetes cluster with auto-scaling and monitoring using Prometheus and Grafana.</p>
-                    <a href="https://github.com/mohammed-borham/project3" class="text-white hover:underline">View on GitHub</a>
+                    <a href="https://github.com/muhammadborham/project3" class="text-white hover:underline">View on GitHub</a>
                 </div>
             </div>
         </div>
@@ -231,10 +253,10 @@
                     <a href="mailto:muhammad.borham06@gmail.com" class="text-white contact-icon" title="Email">
                         <i class="fas fa-envelope fa-2x"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/mohammed-borham-3b03701ba" class="text-white contact-icon" title="LinkedIn">
+                    <a href="https://linkedin.com/in/mohammed-borham" class="text-white contact-icon" title="LinkedIn">
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
-                    <a href="https://github.com/MuhammadBorham" class="text-white contact-icon" title="GitHub">
+                    <a href="https://github.com/muhammadborham" class="text-white contact-icon" title="GitHub">
                         <i class="fab fa-github fa-2x"></i>
                     </a>
                     <a href="https://wa.me/201067936986" class="text-white contact-icon" title="WhatsApp">
@@ -248,7 +270,7 @@
     <!-- Footer -->
     <footer class="bg-black text-white py-6">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Mohammed Borham. All rights reserved.</p>
+            <p>&copy; 2025 Muhammad Borham. All rights reserved.</p>
         </div>
     </footer>
 
