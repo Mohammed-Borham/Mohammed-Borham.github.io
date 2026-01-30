@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,29 +9,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000000; color: #FFFFFF; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #F8F9FA; 
+            color: #212529; 
+        }
         .smooth-scroll { scroll-behavior: smooth; }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .hover-scale { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.05); box-shadow: 0 10px 15px rgba(255, 255, 255, 0.1); }
-        .btn-hover { transition: background-color 0.3s ease, transform 0.2s ease; }
-        .btn-hover:hover { transform: translateY(-2px); background-color: #333333; }
-        .nav-link { transition: color 0.3s ease; }
-        .nav-link:hover { color: #CCCCCC; }
-        img { filter: grayscale(100%); }
-        .skill-chip { display: inline-block; padding: 0.5rem 1rem; margin: 0.25rem; border: 1px solid #FFFFFF; border-radius: 9999px; font-size: 0.875rem; }
-        .contact-icon { transition: color 0.3s ease; }
-        .contact-icon:hover { color: #CCCCCC; }
+        .fade-in { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+        }
+        .fade-in.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        .hover-scale { 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .hover-scale:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+        }
+        .btn-hover { 
+            transition: background-color 0.3s ease, transform 0.2s ease; 
+        }
+        .btn-hover:hover { 
+            transform: translateY(-2px); 
+        }
+        .nav-link { 
+            transition: color 0.3s ease; 
+        }
+        .nav-link:hover { 
+            color: #0066CC; 
+        }
+        .skill-chip { 
+            display: inline-block; 
+            padding: 0.5rem 1rem; 
+            margin: 0.25rem; 
+            border: 2px solid #0066CC; 
+            border-radius: 9999px; 
+            font-size: 0.875rem;
+            background-color: #FFFFFF;
+            color: #0066CC;
+            transition: all 0.3s ease;
+        }
+        .skill-chip:hover {
+            background-color: #0066CC;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+        .contact-icon { 
+            transition: color 0.3s ease, transform 0.3s ease; 
+        }
+        .contact-icon:hover { 
+            color: #0066CC;
+            transform: scale(1.1); 
+        }
         .profile-image {
-            width: 350px;
-            height: 350px;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             object-position: center center;
             border-radius: 50%;
-            border: 3px solid #FFFFFF;
+            border: 4px solid #0066CC;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        /* (Intentionally left blank as requested. Removed previous hero-section background and overlay styles.) */
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E3F2FD 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+        }
+        
         .hero-section::before {
             content: '';
             position: absolute;
@@ -78,12 +92,56 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="none"/><circle cx="30" cy="30" r="1.5" fill="%230066CC" opacity="0.1"/></svg>');
+            z-index: 0;
         }
+        
         .hero-section > * {
             position: relative;
             z-index: 2;
+        }
+        
+        /* Floating DevOps Icons */
+        #devops-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .devops-icon {
+            position: absolute;
+            animation: float-devops 15s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .docker-icon { animation-delay: 3s; animation-duration: 16s; }
+        .aws-icon { animation-delay: 4s; animation-duration: 17s; }
+        .git-icon { animation-delay: 1.5s; animation-duration: 15s; }
+        .github-icon { animation-delay: 4.2s; animation-duration: 20s; }
+        .gitlab-icon { animation-delay: 3.5s; animation-duration: 16s; }
+        .jenkins-icon { animation-delay: 2.5s; animation-duration: 19s; }
+        .python-icon { animation-delay: 1.8s; animation-duration: 16s; }
+        .linux-icon { animation-delay: 4.5s; animation-duration: 18s; }
+        .ubuntu-icon { animation-delay: 2.8s; animation-duration: 17s; }
+        .redhat-icon { animation-delay: 3.2s; animation-duration: 18s; }
+        .node-icon { animation-delay: 2.2s; animation-duration: 16s; }
+        .npm-icon { animation-delay: 3.8s; animation-duration: 19s; }
+        .digitalocean-icon { animation-delay: 4.3s; animation-duration: 17s; }
+        .cloud-icon { animation-delay: 1.2s; animation-duration: 20s; }
+        .server-icon { animation-delay: 3.6s; animation-duration: 16s; }
+        .code-branch-icon { animation-delay: 2.4s; animation-duration: 18s; }
+        .terminal-icon { animation-delay: 1.9s; animation-duration: 15s; }
+        .database-icon { animation-delay: 4.1s; animation-duration: 19s; }
+        .network-icon { animation-delay: 2.7s; animation-duration: 17s; }
+        .cogs-icon { animation-delay: 3.4s; animation-duration: 18s; }
+        
+        @keyframes float-devops {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
         }
         
         /* Parallax and scroll animations */
@@ -112,10 +170,30 @@
             50% { transform: translateY(-20px); }
         }
         
+        /* Section Styles */
+        .section-light {
+            background-color: #FFFFFF;
+        }
+        
+        .section-gray {
+            background-color: #F8F9FA;
+        }
+        
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #DEE2E6;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: #0066CC;
+            box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .hero-section {
-                background-attachment: scroll; /* Fixed backgrounds can cause issues on mobile */
                 min-height: 100vh;
                 padding: 2rem 0;
             }
@@ -127,7 +205,8 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(0, 0, 0, 0.95);
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
                 z-index: 50;
                 flex-direction: column;
                 justify-content: center;
@@ -141,7 +220,7 @@
             .mobile-menu a {
                 font-size: 1.5rem;
                 margin: 1rem 0;
-                color: white;
+                color: #212529;
                 text-decoration: none;
             }
             
@@ -155,7 +234,7 @@
                 display: block;
                 width: 25px;
                 height: 3px;
-                background: white;
+                background: #212529;
                 margin: 5px 0;
                 transition: 0.3s;
             }
@@ -175,6 +254,11 @@
             .desktop-nav {
                 display: none;
             }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
         }
         
         @media (min-width: 769px) {
@@ -190,18 +274,18 @@
 </head>
 <body class="smooth-scroll">
     <!-- Navigation -->
-    <nav class="bg-black text-white fixed w-full top-0 z-10 shadow-md">
+    <nav class="bg-white text-gray-800 fixed w-full top-0 z-10 shadow-md border-b border-gray-200">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Mohammed Borham</h1>
+            <h1 class="text-xl font-bold text-gray-900">Mohammed Borham</h1>
             
             <!-- Desktop Navigation -->
             <ul class="desktop-nav flex space-x-6">
-                <li><a href="#about" class="nav-link hover:text-gray-300">About</a></li>
-                <li><a href="#resume" class="nav-link hover:text-gray-300">Resume</a></li>
-                <li><a href="#projects" class="nav-link hover:text-gray-300">Projects</a></li>
-                <li><a href="#services" class="nav-link hover:text-gray-300">Services</a></li>
-                <li><a href="#contact" class="nav-link hover:text-gray-300">Contact</a></li>
-                <li><a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="nav-link hover:text-gray-300 border border-white px-3 py-1 rounded-full text-sm">
+                <li><a href="#about" class="nav-link hover:text-blue-600">About</a></li>
+                <li><a href="#resume" class="nav-link hover:text-blue-600">Resume</a></li>
+                <li><a href="#projects" class="nav-link hover:text-blue-600">Projects</a></li>
+                <li><a href="#services" class="nav-link hover:text-blue-600">Services</a></li>
+                <li><a href="#contact" class="nav-link hover:text-blue-600">Contact</a></li>
+                <li><a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="nav-link border-2 border-blue-600 text-blue-600 px-3 py-1 rounded-full text-sm hover:bg-blue-600 hover:text-white transition-all">
                     <i class="fas fa-download mr-1"></i>CV
                 </a></li>
             </ul>
@@ -228,339 +312,137 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section text-white py-20 mt-16 parallax-bg" style="position:relative; overflow:hidden;">
-        <!-- Animated Infinity Symbols & DevOps/Cloud/Programming Logos Background -->
-        <div id="infinity-bg">
-            <!-- Infinity Symbols -->
-            <svg class="infinity-symbol" width="120" height="60" viewBox="0 0 120 60" fill="none" style="position:absolute; top:10%; left:15%; opacity:0.15;">
-                <path d="M10,30 Q30,10 60,30 Q90,50 110,30 Q90,10 60,30 Q30,50 10,30 Z" stroke="#fff" stroke-width="4" fill="none"/>
-            </svg>
-            <svg class="infinity-symbol" width="180" height="90" viewBox="0 0 120 60" fill="none" style="position:absolute; top:60%; left:60%; opacity:0.12;">
-                <path d="M10,30 Q30,10 60,30 Q90,50 110,30 Q90,10 60,30 Q30,50 10,30 Z" stroke="#fff" stroke-width="6" fill="none"/>
-            </svg>
-            <svg class="infinity-symbol" width="90" height="45" viewBox="0 0 120 60" fill="none" style="position:absolute; top:40%; left:35%; opacity:0.10;">
-                <path d="M10,30 Q30,10 60,30 Q90,50 110,30 Q90,10 60,30 Q30,50 10,30 Z" stroke="#fff" stroke-width="3" fill="none"/>
-            </svg>
-            <svg class="infinity-symbol" width="140" height="70" viewBox="0 0 120 60" fill="none" style="position:absolute; top:20%; left:70%; opacity:0.13;">
-                <path d="M10,30 Q30,10 60,30 Q90,50 110,30 Q90,10 60,30 Q30,50 10,30 Z" stroke="#fff" stroke-width="5" fill="none"/>
-            </svg>
-            <svg class="infinity-symbol" width="100" height="50" viewBox="0 0 120 60" fill="none" style="position:absolute; top:75%; left:40%; opacity:0.09;">
-                <path d="M10,30 Q30,10 60,30 Q90,50 110,30 Q90,10 60,30 Q30,50 10,30 Z" stroke="#fff" stroke-width="2" fill="none"/>
-            </svg>
-            <!-- Kubernetes Logo -->
-            <svg class="devops-icon k8s-icon" width="60" height="60" viewBox="0 0 60 60" style="position:absolute; top:25%; left:25%; opacity:0.18;">
-                <circle cx="30" cy="30" r="28" fill="#326ce5" />
-                <g stroke="#fff" stroke-width="2" stroke-linecap="round">
-                    <line x1="30" y1="10" x2="30" y2="50"/>
-                    <line x1="10" y1="30" x2="50" y2="30"/>
-                    <line x1="17" y1="17" x2="43" y2="43"/>
-                    <line x1="43" y1="17" x2="17" y2="43"/>
-                </g>
-            </svg>
-            <!-- Docker Logo -->
-            <svg class="devops-icon docker-icon" width="70" height="50" viewBox="0 0 70 50" style="position:absolute; top:55%; left:20%; opacity:0.16;">
-                <rect x="10" y="30" width="50" height="10" rx="5" fill="#2496ed"/>
-                <rect x="15" y="25" width="8" height="8" rx="2" fill="#fff"/>
-                <rect x="25" y="25" width="8" height="8" rx="2" fill="#fff"/>
-                <rect x="35" y="25" width="8" height="8" rx="2" fill="#fff"/>
-                <rect x="45" y="25" width="8" height="8" rx="2" fill="#fff"/>
-                <ellipse cx="35" cy="40" rx="25" ry="7" fill="#2496ed" opacity="0.5"/>
-                <circle cx="60" cy="35" r="6" fill="#fff" stroke="#2496ed" stroke-width="2"/>
-                <circle cx="60" cy="35" r="2" fill="#2496ed"/>
-            </svg>
-            <!-- DevOps Gear Icon -->
-            <svg class="devops-icon gear-icon" width="60" height="60" viewBox="0 0 60 60" style="position:absolute; top:70%; left:75%; opacity:0.14;">
-                <circle cx="30" cy="30" r="18" fill="none" stroke="#fff" stroke-width="4"/>
-                <g stroke="#fff" stroke-width="3">
-                    <line x1="30" y1="6" x2="30" y2="16"/>
-                    <line x1="30" y1="44" x2="30" y2="54"/>
-                    <line x1="6" y1="30" x2="16" y2="30"/>
-                    <line x1="44" y1="30" x2="54" y2="30"/>
-                    <line x1="13" y1="13" x2="20" y2="20"/>
-                    <line x1="47" y1="13" x2="40" y2="20"/>
-                    <line x1="13" y1="47" x2="20" y2="40"/>
-                    <line x1="47" y1="47" x2="40" y2="40"/>
-                </g>
-            </svg>
-            <!-- CI/CD Arrow Icon -->
-            <svg class="devops-icon cicd-icon" width="80" height="40" viewBox="0 0 80 40" style="position:absolute; top:10%; left:65%; opacity:0.13;">
-                <path d="M10,20 Q30,5 50,20 Q70,35 70,20" stroke="#fff" stroke-width="4" fill="none"/>
-                <polygon points="70,20 65,17 65,23" fill="#fff"/>
-            </svg>
-            <!-- Terraform Logo -->
-            <svg class="devops-icon terraform-icon" width="60" height="60" viewBox="0 0 60 60" style="position:absolute; top:35%; left:60%; opacity:0.15;">
-                <polygon points="30,10 50,20 30,30 10,20" fill="#7B42BC"/>
-                <polygon points="30,30 50,40 30,50 10,40" fill="#5C2D91"/>
-                <polygon points="50,20 50,40 30,30" fill="#A084E8"/>
-            </svg>
-            <!-- AWS Cloud Icon -->
-            <svg class="devops-icon aws-icon" width="70" height="40" viewBox="0 0 70 40" style="position:absolute; top:60%; left:50%; opacity:0.13;">
-                <ellipse cx="35" cy="25" rx="25" ry="12" fill="#fff" opacity="0.2"/>
-                <ellipse cx="25" cy="25" rx="10" ry="8" fill="#fff" opacity="0.3"/>
-                <ellipse cx="45" cy="20" rx="12" ry="10" fill="#fff" opacity="0.25"/>
-                <path d="M20,30 Q35,40 50,30" stroke="#FF9900" stroke-width="3" fill="none"/>
-            </svg>
-            <!-- Git Icon -->
-            <svg class="devops-icon git-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:15%; left:50%; opacity:0.14;">
-                <rect x="10" y="10" width="30" height="30" rx="8" fill="#F05032"/>
-                <circle cx="25" cy="25" r="5" fill="#fff"/>
-                <circle cx="35" cy="15" r="3" fill="#fff"/>
-                <circle cx="15" cy="35" r="3" fill="#fff"/>
-                <line x1="25" y1="25" x2="35" y2="15" stroke="#fff" stroke-width="2"/>
-                <line x1="25" y1="25" x2="15" y2="35" stroke="#fff" stroke-width="2"/>
-            </svg>
-            <!-- Ansible Icon -->
-            <svg class="devops-icon ansible-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:80%; left:60%; opacity:0.13;">
-                <circle cx="25" cy="25" r="22" fill="#000" stroke="#fff" stroke-width="3"/>
-                <text x="50%" y="56%" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" dy=".3em">A</text>
-            </svg>
-            <!-- Jenkins Icon (simple) -->
-            <svg class="devops-icon jenkins-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:50%; left:80%; opacity:0.13;">
-                <ellipse cx="25" cy="20" rx="10" ry="12" fill="#fff"/>
-                <ellipse cx="25" cy="35" rx="13" ry="8" fill="#BDBDBD"/>
-                <ellipse cx="25" cy="20" rx="7" ry="8" fill="#E57373"/>
-                <ellipse cx="25" cy="20" rx="3" ry="4" fill="#fff"/>
-            </svg>
-            <!-- GitLab Icon -->
-            <svg class="devops-icon gitlab-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:30%; left:80%; opacity:0.13;">
-                <polygon points="25,5 32,28 25,40 18,28" fill="#FC6D26"/>
-                <polygon points="25,40 32,28 25,32 18,28" fill="#E24329"/>
-                <polygon points="18,28 25,32 25,40" fill="#FCA326"/>
-            </svg>
-            <!-- Prometheus Icon -->
-            <svg class="devops-icon prometheus-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:60%; left:10%; opacity:0.13;">
-                <circle cx="25" cy="25" r="22" fill="#E6522C"/>
-                <rect x="22" y="12" width="6" height="18" rx="3" fill="#fff"/>
-                <ellipse cx="25" cy="35" rx="10" ry="5" fill="#fff" opacity="0.7"/>
-            </svg>
-            <!-- Grafana Icon -->
-            <svg class="devops-icon grafana-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:80%; left:30%; opacity:0.13;">
-                <circle cx="25" cy="25" r="20" fill="#fff" opacity="0.1"/>
-                <path d="M25 10 Q35 15 30 25 Q35 35 25 40 Q15 35 20 25 Q15 15 25 10 Z" fill="none" stroke="#F46800" stroke-width="3"/>
-                <circle cx="25" cy="25" r="7" fill="#F46800"/>
-            </svg>
-            <!-- Linux Tux Icon (simplified) -->
-            <svg class="devops-icon linux-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:10%; left:35%; opacity:0.13;">
-                <ellipse cx="25" cy="30" rx="12" ry="15" fill="#fff"/>
-                <ellipse cx="25" cy="20" rx="8" ry="10" fill="#000"/>
-                <ellipse cx="22" cy="18" rx="2" ry="3" fill="#fff"/>
-                <ellipse cx="28" cy="18" rx="2" ry="3" fill="#fff"/>
-                <ellipse cx="25" cy="35" rx="4" ry="2" fill="#F9D923"/>
-            </svg>
-            <!-- Bash Icon (simple) -->
-            <svg class="devops-icon bash-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:25%; left:10%; opacity:0.13;">
-                <rect x="10" y="15" width="30" height="20" rx="4" fill="#4EAA25"/>
-                <text x="25" y="30" text-anchor="middle" fill="#fff" font-size="14" font-family="monospace">$</text>
-            </svg>
-            <!-- Python Icon (simple) -->
-            <svg class="devops-icon python-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:40%; left:80%; opacity:0.13;">
-                <rect x="10" y="10" width="30" height="15" rx="7" fill="#306998"/>
-                <rect x="10" y="25" width="30" height="15" rx="7" fill="#FFD43B"/>
-                <circle cx="18" cy="18" r="2" fill="#fff"/>
-                <circle cx="32" cy="32" r="2" fill="#fff"/>
-            </svg>
-            <!-- Azure Icon -->
-            <svg class="devops-icon azure-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:60%; left:85%; opacity:0.13;">
-                <polygon points="10,40 25,10 40,40" fill="#0072C6"/>
-                <polygon points="25,10 32,25 18,25" fill="#fff" opacity="0.7"/>
-            </svg>
-            <!-- Google Cloud Icon -->
-            <svg class="devops-icon gcp-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:80%; left:85%; opacity:0.13;">
-                <circle cx="25" cy="25" r="20" fill="#fff" opacity="0.1"/>
-                <path d="M25 15 L35 35 L15 35 Z" fill="#4285F4"/>
-                <circle cx="25" cy="30" r="7" fill="#34A853"/>
-                <circle cx="25" cy="30" r="3" fill="#FBBC05"/>
-            </svg>
-            <!-- Red Hat Icon (simple) -->
-            <svg class="devops-icon redhat-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:20%; left:90%; opacity:0.13;">
-                <ellipse cx="25" cy="30" rx="15" ry="7" fill="#fff" opacity="0.7"/>
-                <ellipse cx="25" cy="25" rx="10" ry="5" fill="#E00"/>
-                <ellipse cx="25" cy="23" rx="7" ry="3" fill="#fff"/>
-            </svg>
-            <!-- Nginx Icon (simple) -->
-            <svg class="devops-icon nginx-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:70%; left:10%; opacity:0.13;">
-                <polygon points="25,10 40,25 25,40 10,25" fill="#009639"/>
-                <text x="25" y="30" text-anchor="middle" fill="#fff" font-size="16" font-family="Arial" dy=".3em">N</text>
-            </svg>
-            <!-- Apache Icon (simple feather) -->
-            <svg class="devops-icon apache-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:10%; left:90%; opacity:0.13;">
-                <path d="M15,40 Q25,10 35,40" stroke="#E34F26" stroke-width="4" fill="none"/>
-                <path d="M20,35 Q25,20 30,35" stroke="#F9D923" stroke-width="2" fill="none"/>
-            </svg>
-            <!-- MySQL Icon (simple dolphin) -->
-            <svg class="devops-icon mysql-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:90%; left:50%; opacity:0.13;">
-                <path d="M10,40 Q25,10 40,40" stroke="#00758F" stroke-width="3" fill="none"/>
-                <ellipse cx="25" cy="35" rx="10" ry="3" fill="#F29111" opacity="0.5"/>
-            </svg>
-            <!-- PostgreSQL Icon (simple elephant) -->
-            <svg class="devops-icon postgres-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:90%; left:70%; opacity:0.13;">
-                <ellipse cx="25" cy="30" rx="12" ry="8" fill="#336791"/>
-                <ellipse cx="25" cy="25" rx="8" ry="5" fill="#fff"/>
-                <rect x="22" y="32" width="6" height="8" rx="2" fill="#336791"/>
-            </svg>
-            <!-- MongoDB Icon (simple leaf) -->
-            <svg class="devops-icon mongo-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:90%; left:30%; opacity:0.13;">
-                <path d="M25,40 Q20,25 25,10 Q30,25 25,40 Z" fill="#13AA52"/>
-                <rect x="24" y="35" width="2" height="8" fill="#B8C4C2"/>
-            </svg>
-            <!-- HTML5 Icon -->
-            <svg class="devops-icon html5-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:5%; left:60%; opacity:0.13;">
-                <polygon points="5,5 35,5 32,45 20,50 8,45" fill="#E44D26"/>
-                <polygon points="20,47 29,43 32,8 20,8" fill="#F16529"/>
-                <rect x="13" y="15" width="14" height="4" fill="#fff"/>
-            </svg>
-            <!-- CSS3 Icon -->
-            <svg class="devops-icon css3-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:5%; left:70%; opacity:0.13;">
-                <polygon points="5,5 35,5 32,45 20,50 8,45" fill="#1572B6"/>
-                <polygon points="20,47 29,43 32,8 20,8" fill="#33AADD"/>
-                <rect x="13" y="20" width="14" height="4" fill="#fff"/>
-            </svg>
-            <!-- JavaScript Icon -->
-            <svg class="devops-icon js-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:5%; left:80%; opacity:0.13;">
-                <polygon points="5,5 35,5 32,45 20,50 8,45" fill="#F7DF1E"/>
-                <text x="20" y="35" text-anchor="middle" fill="#000" font-size="18" font-family="Arial" dy=".3em">JS</text>
-            </svg>
-            <!-- Node.js Icon -->
-            <svg class="devops-icon nodejs-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:5%; left:90%; opacity:0.13;">
-                <polygon points="20,5 38,15 38,35 20,45 2,35 2,15" fill="#3C873A"/>
-                <text x="20" y="30" text-anchor="middle" fill="#fff" font-size="14" font-family="Arial" dy=".3em">Node</text>
-            </svg>
-            <!-- React Icon -->
-            <svg class="devops-icon react-icon" width="50" height="50" viewBox="0 0 50 50" style="position:absolute; top:90%; left:10%; opacity:0.13;">
-                <circle cx="25" cy="25" r="5" fill="#61DAFB"/>
-                <ellipse cx="25" cy="25" rx="18" ry="7" fill="none" stroke="#61DAFB" stroke-width="2"/>
-                <ellipse cx="25" cy="25" rx="7" ry="18" fill="none" stroke="#61DAFB" stroke-width="2" transform="rotate(60 25 25)"/>
-                <ellipse cx="25" cy="25" rx="7" ry="18" fill="none" stroke="#61DAFB" stroke-width="2" transform="rotate(120 25 25)"/>
-            </svg>
-            <!-- C++ Icon -->
-            <svg class="devops-icon cpp-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:95%; left:80%; opacity:0.13;">
-                <rect x="5" y="10" width="30" height="30" rx="8" fill="#00599C"/>
-                <text x="20" y="30" text-anchor="middle" fill="#fff" font-size="16" font-family="Arial" dy=".3em">C++</text>
-            </svg>
-            <!-- Java Icon -->
-            <svg class="devops-icon java-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:95%; left:60%; opacity:0.13;">
-                <ellipse cx="20" cy="35" rx="10" ry="4" fill="#5382A1"/>
-                <path d="M20,35 Q25,25 20,15 Q15,25 20,35 Z" fill="#fff"/>
-                <ellipse cx="20" cy="15" rx="3" ry="2" fill="#E76F00"/>
-            </svg>
-            <!-- PHP Icon -->
-            <svg class="devops-icon php-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:95%; left:40%; opacity:0.13;">
-                <ellipse cx="20" cy="30" rx="15" ry="8" fill="#777BB4"/>
-                <text x="20" y="33" text-anchor="middle" fill="#fff" font-size="14" font-family="Arial" dy=".3em">PHP</text>
-            </svg>
-            <!-- Go Icon -->
-            <svg class="devops-icon go-icon" width="40" height="50" viewBox="0 0 40 50" style="position:absolute; top:95%; left:20%; opacity:0.13;">
-                <ellipse cx="20" cy="30" rx="15" ry="8" fill="#00ADD8"/>
-                <text x="20" y="33" text-anchor="middle" fill="#fff" font-size="14" font-family="Arial" dy=".3em">Go</text>
-            </svg>
+    <section class="hero-section text-gray-900 py-20 mt-16 parallax-bg">
+        <!-- DevOps Icons Background -->
+        <div id="devops-bg">
+            <!-- Docker -->
+            <div class="devops-icon docker-icon" style="top:15%; left:10%; opacity:0.15;">
+                <i class="fab fa-docker" style="font-size: 80px; color: #2496ed;"></i>
+            </div>
+            
+            <!-- AWS -->
+            <div class="devops-icon aws-icon" style="top:25%; left:85%; opacity:0.15;">
+                <i class="fab fa-aws" style="font-size: 80px; color: #FF9900;"></i>
+            </div>
+            
+            <!-- Git -->
+            <div class="devops-icon git-icon" style="top:60%; left:15%; opacity:0.15;">
+                <i class="fab fa-git-alt" style="font-size: 75px; color: #F05032;"></i>
+            </div>
+            
+            <!-- GitHub -->
+            <div class="devops-icon github-icon" style="top:10%; left:50%; opacity:0.15;">
+                <i class="fab fa-github" style="font-size: 75px; color: #333;"></i>
+            </div>
+            
+            <!-- GitLab -->
+            <div class="devops-icon gitlab-icon" style="top:70%; left:80%; opacity:0.15;">
+                <i class="fab fa-gitlab" style="font-size: 75px; color: #FC6D26;"></i>
+            </div>
+            
+            <!-- Jenkins -->
+            <div class="devops-icon jenkins-icon" style="top:45%; left:5%; opacity:0.15;">
+                <i class="fab fa-jenkins" style="font-size: 75px; color: #D33833;"></i>
+            </div>
+            
+            <!-- Python -->
+            <div class="devops-icon python-icon" style="top:35%; left:90%; opacity:0.15;">
+                <i class="fab fa-python" style="font-size: 75px; color: #3776AB;"></i>
+            </div>
+            
+            <!-- Linux -->
+            <div class="devops-icon linux-icon" style="top:80%; left:25%; opacity:0.15;">
+                <i class="fab fa-linux" style="font-size: 80px; color: #FCC624;"></i>
+            </div>
+            
+            <!-- Ubuntu -->
+            <div class="devops-icon ubuntu-icon" style="top:50%; left:75%; opacity:0.15;">
+                <i class="fab fa-ubuntu" style="font-size: 75px; color: #E95420;"></i>
+            </div>
+            
+            <!-- Red Hat -->
+            <div class="devops-icon redhat-icon" style="top:20%; left:65%; opacity:0.15;">
+                <i class="fab fa-redhat" style="font-size: 75px; color: #EE0000;"></i>
+            </div>
+            
+            <!-- Node.js -->
+            <div class="devops-icon node-icon" style="top:75%; left:55%; opacity:0.15;">
+                <i class="fab fa-node-js" style="font-size: 75px; color: #339933;"></i>
+            </div>
+            
+            <!-- npm -->
+            <div class="devops-icon npm-icon" style="top:55%; left:45%; opacity:0.15;">
+                <i class="fab fa-npm" style="font-size: 75px; color: #CB3837;"></i>
+            </div>
+            
+            <!-- Digital Ocean -->
+            <div class="devops-icon digitalocean-icon" style="top:85%; left:70%; opacity:0.15;">
+                <i class="fab fa-digital-ocean" style="font-size: 70px; color: #0080FF;"></i>
+            </div>
+            
+            <!-- Cloud (General) -->
+            <div class="devops-icon cloud-icon" style="top:30%; left:30%; opacity:0.12;">
+                <i class="fas fa-cloud" style="font-size: 90px; color: #0066CC;"></i>
+            </div>
+            
+            <!-- Server -->
+            <div class="devops-icon server-icon" style="top:65%; left:60%; opacity:0.12;">
+                <i class="fas fa-server" style="font-size: 75px; color: #555;"></i>
+            </div>
+            
+            <!-- Code Branch (CI/CD) -->
+            <div class="devops-icon code-branch-icon" style="top:40%; left:20%; opacity:0.12;">
+                <i class="fas fa-code-branch" style="font-size: 70px; color: #0066CC;"></i>
+            </div>
+            
+            <!-- Terminal -->
+            <div class="devops-icon terminal-icon" style="top:15%; left:35%; opacity:0.12;">
+                <i class="fas fa-terminal" style="font-size: 70px; color: #000;"></i>
+            </div>
+            
+            <!-- Database -->
+            <div class="devops-icon database-icon" style="top:50%; left:50%; opacity:0.12;">
+                <i class="fas fa-database" style="font-size: 70px; color: #336791;"></i>
+            </div>
+            
+            <!-- Network -->
+            <div class="devops-icon network-icon" style="top:25%; left:45%; opacity:0.11;">
+                <i class="fas fa-network-wired" style="font-size: 70px; color: #0066CC;"></i>
+            </div>
+            
+            <!-- Cogs (Automation) -->
+            <div class="devops-icon cogs-icon" style="top:70%; left:35%; opacity:0.12;">
+                <i class="fas fa-cogs" style="font-size: 75px; color: #555;"></i>
+            </div>
         </div>
+        
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 floating-element">Mohammed Borham</h1>
-            <h2 class="text-3xl md:text-4xl font-semibold mb-4 scroll-reveal">DevOps & Cloud Engineer</h2>
-            <p class="text-lg md:text-xl mb-6 scroll-reveal">Building scalable, automated, and secure cloud infrastructure.</p>
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 floating-element text-gray-900">Mohammed Borham</h1>
+            <h2 class="text-3xl md:text-4xl font-semibold mb-4 scroll-reveal text-blue-600">DevOps & Cloud Engineer</h2>
+            <p class="text-lg md:text-xl mb-6 scroll-reveal text-gray-700">Building scalable, automated, and secure cloud infrastructure.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal">
-                <a href="#contact" class="bg-white text-black px-6 py-2 rounded-full btn-hover">Get in Touch</a>
-                <a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="bg-transparent border-2 border-white text-white px-6 py-2 rounded-full btn-hover hover:bg-white hover:text-black transition-all duration-300">
+                <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-full btn-hover hover:bg-blue-700 shadow-lg">Get in Touch</a>
+                <a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="bg-white border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full btn-hover hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg">
                     <i class="fas fa-download mr-2"></i>Download CV
                 </a>
             </div>
         </div>
-        <style>
-            /* Infinity animation keyframes */
-            .infinity-symbol {
-                animation: infinity-float 8s linear infinite alternate;
-            }
-            .infinity-symbol:nth-child(2) {
-                animation-delay: 2s;
-                animation-duration: 10s;
-            }
-            .infinity-symbol:nth-child(3) {
-                animation-delay: 4s;
-                animation-duration: 7s;
-            }
-            .infinity-symbol:nth-child(4) {
-                animation-delay: 1s;
-                animation-duration: 12s;
-            }
-            .infinity-symbol:nth-child(5) {
-                animation-delay: 3s;
-                animation-duration: 9s;
-            }
-            /* DevOps icons animation */
-            .devops-icon {
-                animation: devops-float 10s ease-in-out infinite alternate;
-            }
-            .k8s-icon { animation-delay: 1s; animation-duration: 11s; }
-            .docker-icon { animation-delay: 3s; animation-duration: 9s; }
-            .gear-icon { animation-delay: 2s; animation-duration: 13s; }
-            .cicd-icon { animation-delay: 4s; animation-duration: 12s; }
-            .terraform-icon { animation-delay: 2.5s; animation-duration: 10s; }
-            .aws-icon { animation-delay: 3.5s; animation-duration: 12s; }
-            .git-icon { animation-delay: 1.5s; animation-duration: 8s; }
-            .ansible-icon { animation-delay: 4.5s; animation-duration: 11s; }
-            .jenkins-icon { animation-delay: 2.2s; animation-duration: 10s; }
-            .gitlab-icon { animation-delay: 3.2s; animation-duration: 13s; }
-            .prometheus-icon { animation-delay: 2.7s; animation-duration: 12s; }
-            .grafana-icon { animation-delay: 3.7s; animation-duration: 11s; }
-            .linux-icon { animation-delay: 1.7s; animation-duration: 9s; }
-            .bash-icon { animation-delay: 2.9s; animation-duration: 10s; }
-            .python-icon { animation-delay: 4.1s; animation-duration: 12s; }
-            .azure-icon { animation-delay: 2.3s; animation-duration: 10s; }
-            .gcp-icon { animation-delay: 3.3s; animation-duration: 13s; }
-            .redhat-icon { animation-delay: 1.9s; animation-duration: 11s; }
-            .nginx-icon { animation-delay: 2.6s; animation-duration: 10s; }
-            .apache-icon { animation-delay: 3.6s; animation-duration: 12s; }
-            .mysql-icon { animation-delay: 2.8s; animation-duration: 11s; }
-            .postgres-icon { animation-delay: 3.8s; animation-duration: 13s; }
-            .mongo-icon { animation-delay: 1.8s; animation-duration: 10s; }
-            .html5-icon { animation-delay: 2.1s; animation-duration: 9s; }
-            .css3-icon { animation-delay: 3.1s; animation-duration: 10s; }
-            .js-icon { animation-delay: 4.3s; animation-duration: 12s; }
-            .nodejs-icon { animation-delay: 2.4s; animation-duration: 11s; }
-            .react-icon { animation-delay: 3.4s; animation-duration: 13s; }
-            .cpp-icon { animation-delay: 1.4s; animation-duration: 10s; }
-            .java-icon { animation-delay: 2.8s; animation-duration: 12s; }
-            .php-icon { animation-delay: 3.9s; animation-duration: 11s; }
-            .go-icon { animation-delay: 1.2s; animation-duration: 9s; }
-            @keyframes infinity-float {
-                0% { transform: scale(1) rotate(0deg) translateY(0); }
-                50% { transform: scale(1.1) rotate(10deg) translateY(-15px); }
-                100% { transform: scale(1) rotate(0deg) translateY(0); }
-            }
-            @keyframes devops-float {
-                0% { transform: scale(1) rotate(0deg) translateY(0); }
-                50% { transform: scale(1.08) rotate(-8deg) translateY(-10px); }
-                100% { transform: scale(1) rotate(0deg) translateY(0); }
-            }
-            #infinity-bg {
-                position: absolute;
-                top: 0; left: 0; width: 100%; height: 100%;
-                pointer-events: none;
-                z-index: 0;
-            }
-            .hero-section > .container {
-                position: relative;
-                z-index: 2;
-            }
-        </style>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-black text-white py-16 scroll-reveal">
+    <section id="about" class="section-light text-gray-900 py-16 scroll-reveal">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center">
+            <h2 class="text-4xl font-bold mb-12 text-center scroll-reveal text-gray-900">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/3 mb-6 md:mb-0 scroll-reveal">
-                    <img src="images/1.jpeg" alt="Profile Picture" class="profile-image mx-auto hover-scale">
+                    <img src="profile.png" alt="Profile Picture" class="profile-image mx-auto hover-scale">
                 </div>
-                <div class="md:w-2/3 md:pl-8 scroll-reveal">
-                    <p class="text-lg mb-4">
-                        I'm a DevOps Engineer passionate about building reliable, automated, and scalable infrastructure.
-                        I specialize in cloud technologies (AWS), containerization (Docker, Kubernetes), and Infrastructure as Code (Terraform).
+                <div class="md:w-2/3 scroll-reveal">
+                    <p class="text-lg mb-4 text-gray-700 leading-relaxed">
+                        Results-driven DevOps Engineer with proven experience automating infrastructure, deploying scalable containerized environments, and improving CI/CD reliability. I specialize in AWS, Docker, Kubernetes, Terraform, and Ansible.
                     </p>
-                    <p class="text-lg">
-                        Through hands-on training at NTI and CLS, I've built CI/CD pipelines, automated AWS environments, and deployed production-ready systems using modern DevOps tools.
-                        I'm constantly exploring new ways to improve delivery speed, system reliability, and developer experience.
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        I bridge the gap between development and operations by implementing automation, proactive monitoring, and streamlined delivery workflows that boost uptime and team productivity. Currently working at iVolve Technologies and completed intensive training at NTI.
                     </p>
                 </div>
             </div>
@@ -568,229 +450,248 @@
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="bg-black text-white py-16 scroll-reveal">
+    <section id="resume" class="section-gray text-gray-900 py-16 scroll-reveal">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4 text-center">Resume</h2>
-
-            <!-- Download CV -->
-            <div class="text-center mb-8">
-                <a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing"
-                     target="_blank"
-                     class="inline-flex items-center bg-white text-black px-6 py-3 rounded-full btn-hover hover:bg-gray-200 transition-all duration-300 shadow-lg">
-                    <i class="fas fa-download mr-2"></i>Download Full CV
-                </a>
-            </div>
+            <h2 class="text-4xl font-bold mb-8 text-center text-gray-900">Resume</h2>
 
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- EXPERIENCE -->
                 <div>
-                    <h3 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">Experience & Projects</h3>
+                    <h3 class="text-2xl font-semibold mb-6 border-b-2 border-blue-600 pb-2 text-gray-900">Professional Experience</h3>
 
-                    <div class="mb-8">
-                        <h4 class="text-xl font-semibold">Cloud DevOps Accelerator <span class="text-sm text-gray-400 font-normal">NTI HireReady Initiative</span></h4>
-                        <p class="text-gray-400 mb-2">Jul 2025 – Oct 2025</p>
-                        <ul class="list-disc pl-5 space-y-1 text-base">
-                            <li>Completed hands-on AWS Academy and Red Hat Academy training in Cloud Architecting, Security, and Linux.</li>
-                            <li>Worked with AWS, Terraform, Ansible, Docker, Kubernetes, OpenShift, Helm, Jenkins, and GitLab CI/CD.</li>
-                            <li>Built automated CI/CD pipelines and containerized microservices with Kubernetes and Docker.</li>
-                            <li>Applied Infrastructure as Code (IaC) using Terraform and AWS CloudFormation for reproducible environments.</li>
+                    <div class="mb-8 card p-6">
+                        <h4 class="text-xl font-semibold text-gray-900">DevOps Engineer Intern</h4>
+                        <p class="text-blue-600 font-medium mb-1">iVolve Technologies</p>
+                        <p class="text-gray-600 mb-3">Oct 2025 – Nov 2025</p>
+                        <ul class="list-disc pl-5 space-y-2 text-base text-gray-700">
+                            <li>Automated infrastructure provisioning and application deployments using Ansible, Docker, and Kubernetes</li>
+                            <li>Designed and maintained CI/CD pipelines using Jenkins and Argo CD, improving release reliability</li>
+                            <li>Supported cloud-native application delivery leveraging AWS services and GitOps workflows</li>
+                            <li>Collaborated with senior engineers to optimize automation scripts and implement secure deployment practices</li>
+                        </ul>
+                        <a href="https://github.com/Mohammed-Borham/iVolve-internship" target="_blank" class="inline-block mt-3 text-blue-600 hover:text-blue-800 font-medium">
+                            <i class="fab fa-github mr-1"></i>View Projects on GitHub
+                        </a>
+                    </div>
+
+                    <div class="mb-8 card p-6">
+                        <h4 class="text-xl font-semibold text-gray-900">Cloud DevOps Trainee</h4>
+                        <p class="text-blue-600 font-medium mb-1">National Telecommunication Institute (NTI)</p>
+                        <p class="text-gray-600 mb-3">Jul 2025 – Oct 2025</p>
+                        <ul class="list-disc pl-5 space-y-2 text-base text-gray-700">
+                            <li>Completed hands-on AWS Academy and Red Hat Academy training (Cloud Architecting, Security, Linux, OpenShift)</li>
+                            <li>Gained practical experience with Terraform, Kubernetes, Docker, Ansible, Helm, Jenkins, and GitLab CI/CD</li>
+                            <li>Deployed containerized applications and automated infrastructure builds on AWS</li>
+                            <li>Collaborated in team-based DevOps simulations focused on automation and monitoring</li>
                         </ul>
                     </div>
+                </div>
 
-                    <div id="resume-more" style="display:none;">
-                        <div class="mb-8">
-                            <h4 class="text-xl font-semibold">Automated Infrastructure Setup <span class="text-sm text-gray-400 font-normal">Personal Project</span></h4>
-                            <p class="text-gray-400 mb-2">Jun 2025</p>
-                            <ul class="list-disc pl-5 space-y-1 text-base">
-                                <li>Automated AWS VPC provisioning using Terraform with reusable modules.</li>
-                                <li>Configured subnets, security groups, and EC2 instances, reducing setup time by 40%.</li>
-                            </ul>
-                        </div>
+                <!-- EDUCATION & CERTIFICATIONS -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 border-b-2 border-blue-600 pb-2 text-gray-900">Education & Certifications</h3>
 
-                        <div class="mb-8">
-                            <h4 class="text-xl font-semibold">CI/CD Pipeline for Web Application <span class="text-sm text-gray-400 font-normal">Personal Project</span></h4>
-                            <p class="text-gray-400 mb-2">May 2025</p>
-                            <ul class="list-disc pl-5 space-y-1 text-base">
-                                <li>Created Jenkins CI/CD pipeline for a Python app using Docker and Kubernetes.</li>
-                                <li>Automated build, test, and deployment workflows, reducing deployment errors by 15%.</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xl font-semibold">Library Management System <span class="text-sm text-gray-400 font-normal">DevOps Training Project (CLS)</span></h4>
-                            <p class="text-gray-400 mb-2">Jan 2025 – Apr 2025</p>
-                            <ul class="list-disc pl-5 space-y-1 text-base">
-                                <li>Built CI/CD pipelines using Jenkins and deployed containerized apps on AWS EKS (Kubernetes).</li>
-                                <li>Provisioned infrastructure via Terraform and set up monitoring with Prometheus & Grafana.</li>
-                                <li>Integrated version control with GitHub and implemented automated testing pipelines.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <button id="resume-toggle" class="bg-white text-black px-5 py-2 rounded-full btn-hover hover:bg-gray-200 transition-all duration-300 shadow-lg">
-                            Show More
-                        </button>
-                    </div>
+                    <div class="mb-8 card p-6">
+                        <h4 class="text-xl font-semibold text-gray-900">B.Sc. in Electronics & Communication Engineering</h4>
+                        <p class="text-gray-600 mb-2">Higher Institute of Engineering and Technology, Alexandria</p>
+                        <p class="text-gray-500 text-sm">Sep 2018 – Jul 2023</p>
                     </div>
 
-                    <!-- EDUCATION & CERTIFICATIONS -->
-                    <div>
-                        <h3 class="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">Education & Certifications</h3>
-
-                        <div class="mb-8">
-                            <h4 class="text-xl font-semibold">B.Sc. in Electronics & Communication Engineering</h4>
-                            <p class="text-gray-400 mb-2">Higher Institute of Engineering and Technology, Alexandria, Egypt</p>
-                            <p class="text-gray-400 text-sm">2018 – 2023</p>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xl font-semibold mb-2">Courses & Certifications</h4>
-                            <ul class="list-disc pl-5 space-y-1 text-base">
-                                <li><strong>DevOps Full Course</strong> – CLS Learning Solutions <span class="text-gray-400 text-sm">(Jan 2025 – Apr 2025)</span></li>
-                                <li><strong>DevOps Fundamentals</strong> – Udemy <span class="text-gray-400 text-sm">(2024)</span></li>
-                                <li><strong>CCNA, MCSA, OSA</strong> – NTI <span class="text-gray-400 text-sm">(2023)</span></li>
-                                <li><strong>Red Hat & AWS Academy Training</strong> – Cloud Architecting, OpenShift, Podman, Ansible <span class="text-gray-400 text-sm">(2025)</span></li>
-                            </ul>
+                    <div class="card p-6">
+                        <h4 class="text-xl font-semibold mb-4 text-gray-900">Certifications</h4>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-blue-600 pl-4">
+                                <h5 class="font-semibold text-gray-900">AWS Certified Cloud Practitioner</h5>
+                                <p class="text-sm text-gray-600">Valid until: Jan 16, 2029</p>
+                                <a href="https://drive.google.com/file/d/1Vu73GEd0pykw24qBD-2_PXZjLQSIpD9I/view?usp=sharing" target="_blank" class="text-blue-600 text-sm hover:underline">
+                                    <i class="fas fa-certificate mr-1"></i>View Certificate
+                                </a>
+                            </div>
+                            <div class="border-l-4 border-blue-600 pl-4">
+                                <h5 class="font-semibold text-gray-900">HCCDA – Tech Essentials (Huawei Cloud)</h5>
+                                <p class="text-sm text-gray-600">Valid until: Oct 28, 2028</p>
+                                <a href="https://drive.google.com/file/d/1CFZr8c5AhWlhOfbvPbYb2THeBbGPxow-/view?usp=sharing" target="_blank" class="text-blue-600 text-sm hover:underline">
+                                    <i class="fas fa-certificate mr-1"></i>View Certificate
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+            </div>
 
-                    <!-- SKILLS -->
-                    <div class="mt-12">
-                        <h3 class="text-2xl font-semibold mb-6 text-center">Skills</h3>
-                        <div class="flex flex-wrap justify-center gap-2" id="skills-list">
-                            <span class="skill-chip">AWS (EC2, S3, EKS, VPC, IAM, CloudWatch)</span>
-                            <span class="skill-chip">Terraform</span>
-                            <span class="skill-chip">Jenkins</span>
-                            <span class="skill-chip">Git & GitHub</span>
-                            <span class="skill-chip">GitLab CI/CD</span>
-                            <span class="skill-chip">Docker</span>
-                            <span class="skill-chip">Kubernetes</span>
-                            <span class="skill-chip">OpenShift</span>
-                            <span class="skill-chip">Ansible</span>
-                            <span class="skill-chip">Helm</span>
-                            <span class="skill-chip">Prometheus</span>
-                            <span class="skill-chip">Grafana</span>
-                            <span class="skill-chip">Linux (Bash, Python)</span>
-                            <span class="skill-chip">Networking (TCP/IP, DNS, HTTP/S, Load Balancing)</span>
-                            <span class="skill-chip">Infrastructure as Code (IaC)</span>
-                            <span class="skill-chip">Continuous Integration & Delivery</span>
-                            <span class="skill-chip">Problem Solving</span>
-                            <span class="skill-chip">Team Collaboration</span>
-                            <span class="skill-chip">Adaptability</span>
-                            <span class="skill-chip">Arabic (Native)</span>
-                            <span class="skill-chip">English (B2)</span>
-                        </div>
-                    </div>
-                    </div>
-                    </section>
-                    <style>
-                        /* Highlight skill-chip on hover */
-                        #skills-list .skill-chip {
-                            transition: background 0.3s, color 0.3s, border-color 0.3s;
-                            cursor: pointer;
-                        }
-                        #skills-list .skill-chip:hover {
-                            background: #fff;
-                            color: #000;
-                            border-color: #fff;
-                        }
-                    </style>
-                    <script>
-                        // Resume show more/less functionality
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const more = document.getElementById('resume-more');
-                            const btn = document.getElementById('resume-toggle');
-                            let shown = false;
-                            btn.addEventListener('click', function () {
-                                shown = !shown;
-                                more.style.display = shown ? 'block' : 'none';
-                                btn.textContent = shown ? 'Show Less' : 'Show More';
-                            });
-
-                            // Animate skills
-                            const skills = document.querySelectorAll('#skills-list .skill-chip');
-                            skills.forEach((chip, i) => {
-                                chip.style.opacity = 0;
-                                chip.style.transform = 'translateY(20px)';
-                                chip.style.transition = 'opacity 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1)';
-                                setTimeout(() => {
-                                    chip.style.opacity = 1;
-                                    chip.style.transform = 'translateY(0)';
-                                }, 100 * i);
-                            });
-                        });
-                    </script>
+            <!-- SKILLS -->
+            <div class="mt-16">
+                <h3 class="text-3xl font-semibold mb-8 text-center text-gray-900">Technical Skills</h3>
+                <div class="flex flex-wrap justify-center gap-3" id="skills-list">
+                    <span class="skill-chip">AWS (EC2, S3, EKS, VPC, IAM, CloudWatch)</span>
+                    <span class="skill-chip">Terraform</span>
+                    <span class="skill-chip">AWS CloudFormation</span>
+                    <span class="skill-chip">Docker</span>
+                    <span class="skill-chip">Kubernetes</span>
+                    <span class="skill-chip">OpenShift</span>
+                    <span class="skill-chip">Podman</span>
+                    <span class="skill-chip">Ansible</span>
+                    <span class="skill-chip">Jenkins</span>
+                    <span class="skill-chip">Git & GitHub Actions</span>
+                    <span class="skill-chip">Argo CD</span>
+                    <span class="skill-chip">Bash</span>
+                    <span class="skill-chip">Python</span>
+                    <span class="skill-chip">YAML</span>
+                    <span class="skill-chip">Linux (Ubuntu, RHEL, Amazon Linux)</span>
+                    <span class="skill-chip">TCP/IP</span>
+                    <span class="skill-chip">DNS</span>
+                    <span class="skill-chip">Load Balancing</span>
+                    <span class="skill-chip">VPN</span>
+                    <span class="skill-chip">Firewall Rules</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="bg-black text-white py-16 scroll-reveal">
+    <section id="projects" class="section-light text-gray-900 py-16 scroll-reveal">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal">Projects</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <a href="https://github.com/Mohammed-Borham" target="_blank" class="bg-black border border-white p-6 rounded-lg hover-scale scroll-reveal block transition-colors duration-300 hover:bg-white hover:text-black">
-                    <h3 class="text-xl font-semibold mb-2">CI/CD Pipeline for Microservices</h3>
-                    <p class="text-gray-400 mb-0">Built a CI/CD pipeline using Jenkins, Docker, and AWS ECS to deploy a microservices-based application.</p>
+            <h2 class="text-4xl font-bold mb-12 text-center scroll-reveal text-gray-900">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1: Cloud DevOps Project -->
+                <a href="https://github.com/Mohammed-Borham/Cloud-DevOps-Project" target="_blank" class="card p-8 hover-scale scroll-reveal block group">
+                    <div class="flex items-center mb-4">
+                        <div class="text-blue-600 text-4xl mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Cloud DevOps Project</h3>
+                            <p class="text-sm text-gray-500">iVolve Graduation Project · Nov 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        Built an end-to-end cloud-native DevOps pipeline using AWS, Terraform, Docker, Kubernetes (EKS), GitHub Actions, and ArgoCD. Implemented GitOps workflows for automated deployments.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">AWS EKS</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Terraform</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">ArgoCD</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">GitHub Actions</span>
+                    </div>
                 </a>
-                <a href="https://github.com/Mohammed-Borham" target="_blank" class="bg-black border border-white p-6 rounded-lg hover-scale scroll-reveal block transition-colors duration-300 hover:bg-white hover:text-black">
-                    <h3 class="text-xl font-semibold mb-2">Serverless Web App</h3>
-                    <p class="text-gray-400 mb-0">Developed a serverless web application using AWS Lambda, API Gateway, and DynamoDB.</p>
+
+                <!-- Project 2: 3-Tier VPC Architecture -->
+                <a href="https://github.com/Mohammed-Borham/3-Tier-AWS-VPC-Architecture" target="_blank" class="card p-8 hover-scale scroll-reveal block group">
+                    <div class="flex items-center mb-4">
+                        <div class="text-blue-600 text-4xl mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">3-Tier AWS VPC Architecture</h3>
+                            <p class="text-sm text-gray-500">Personal Project · May 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        Designed and implemented a secure, scalable 3-tier AWS VPC architecture across multiple Availability Zones with Gateway & Interface VPC Endpoints, NAT Gateway, and RDS Multi-AZ setup.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">AWS VPC</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Multi-AZ</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">RDS</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Security</span>
+                    </div>
                 </a>
-                <a href="https://github.com/Mohammed-Borham" target="_blank" class="bg-black border border-white p-6 rounded-lg hover-scale scroll-reveal block transition-colors duration-300 hover:bg-white hover:text-black">
-                    <h3 class="text-xl font-semibold mb-2">Kubernetes Cluster Setup</h3>
-                    <p class="text-gray-400 mb-0">Configured a highly available Kubernetes cluster with auto-scaling and monitoring using Prometheus and Grafana.</p>
+
+                <!-- Project 3: iVolve Internship Projects -->
+                <a href="https://github.com/Mohammed-Borham/iVolve-internship" target="_blank" class="card p-8 hover-scale scroll-reveal block group">
+                    <div class="flex items-center mb-4">
+                        <div class="text-blue-600 text-4xl mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">iVolve Internship Collection</h3>
+                            <p class="text-sm text-gray-500">DevOps Projects · Oct-Nov 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        Collection of DevOps automation projects including CI/CD pipelines with Jenkins and Argo CD, Infrastructure as Code with Ansible and Terraform, and Kubernetes deployments.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Jenkins</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Ansible</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Kubernetes</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Argo CD</span>
+                    </div>
                 </a>
+
+                <!-- Placeholder for Future Project -->
+                <div class="card p-8 scroll-reveal opacity-60">
+                    <div class="flex items-center mb-4">
+                        <div class="text-gray-400 text-4xl mr-4">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-600">More Projects Coming Soon</h3>
+                            <p class="text-sm text-gray-500">Stay tuned...</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        I'm continuously working on new DevOps projects. Check my GitHub for the latest updates!
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="bg-black text-white py-16 scroll-reveal">
+    <section id="services" class="section-gray text-gray-900 py-16 scroll-reveal">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center scroll-reveal">Services</h2>
+            <h2 class="text-4xl font-bold mb-12 text-center scroll-reveal text-gray-900">Services</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-black border border-white p-6 rounded-lg hover-scale text-center scroll-reveal">
-                    <h3 class="text-xl font-semibold mb-2">Cloud Architecture</h3>
-                    <p class="text-gray-400">Design and deploy scalable, secure cloud infrastructures on AWS.</p>
+                <div class="card p-8 hover-scale text-center scroll-reveal">
+                    <div class="text-blue-600 text-5xl mb-4">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Cloud Architecture</h3>
+                    <p class="text-gray-600">Design and deploy scalable, secure cloud infrastructures on AWS with best practices for high availability and cost optimization.</p>
                 </div>
-                <div class="bg-black border border-white p-6 rounded-lg hover-scale text-center scroll-reveal">
-                    <h3 class="text-xl font-semibold mb-2">CI/CD Automation</h3>
-                    <p class="text-gray-400">Implement automated CI/CD pipelines using Jenkins, GitHub Actions, or GitLab CI.</p>
+                <div class="card p-8 hover-scale text-center scroll-reveal">
+                    <div class="text-blue-600 text-5xl mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">CI/CD Automation</h3>
+                    <p class="text-gray-600">Implement automated CI/CD pipelines using Jenkins, GitHub Actions, or GitLab CI with comprehensive testing and deployment strategies.</p>
                 </div>
-                <div class="bg-black border border-white p-6 rounded-lg hover-scale text-center scroll-reveal">
-                    <h3 class="text-xl font-semibold mb-2">Containerization & Orchestration</h3>
-                    <p class="text-gray-400">Containerize applications with Docker and manage them with Kubernetes for high availability.</p>
+                <div class="card p-8 hover-scale text-center scroll-reveal">
+                    <div class="text-blue-600 text-5xl mb-4">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Container Orchestration</h3>
+                    <p class="text-gray-600">Containerize applications with Docker and manage them with Kubernetes/OpenShift for high availability and scalability.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-black text-white py-16 scroll-reveal">
+    <section id="contact" class="section-light text-gray-900 py-16 scroll-reveal">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center">Contact Me</h2>
-            <div class="max-w-lg mx-auto">
-                <p class="text-lg mb-6 text-center">Feel free to reach out for collaboration or inquiries!</p>
-                <!-- LinkedIn Badge + Icons Column -->
-                <div class="flex flex-col items-center gap-6">
-                    <div class="flex flex-row items-center gap-6">
-                        <!-- LinkedIn Badge -->
-                        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="mohammed-borham" data-version="v1">
-                            <a class="badge-base__link LI-simple-link" href="https://eg.linkedin.com/in/mohammed-borham?trk=profile-badge">Mohammed Borham</a>
-                        </div>
-                        <!-- Contact Icons (vertical) -->
-                        <div class="flex flex-col gap-4 ml-4">
-                            <a href="mailto:borham.mohammad@gmail.com" class="text-white contact-icon" title="Email">
-                                <i class="fas fa-envelope fa-2x"></i>
-                            </a>
-                            <a href="https://github.com/Mohammed-Borham" class="text-white contact-icon" title="GitHub">
-                                <i class="fab fa-github fa-2x"></i>
-                            </a>
-                            <a href="https://wa.me/201067936986" class="text-white contact-icon" title="WhatsApp">
-                                <i class="fab fa-whatsapp fa-2x"></i>
-                            </a>
-                        </div>
+            <h2 class="text-4xl font-bold mb-12 text-center text-gray-900">Contact Me</h2>
+            <div class="max-w-2xl mx-auto">
+                <p class="text-lg mb-8 text-center text-gray-700">Feel free to reach out for collaboration or inquiries!</p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <!-- LinkedIn Badge -->
+                    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="mohammed-borham" data-version="v1">
+                        <a class="badge-base__link LI-simple-link" href="https://eg.linkedin.com/in/mohammed-borham?trk=profile-badge">Mohammed Borham</a>
                     </div>
-                </div>
+                    
+                    <!-- Contact Icons -->
+                    <div class="flex gap-6">
+                        <a href="mailto:borham.mohammad@gmail.com" class="text-gray-700 contact-icon" title="Email">
+                            <i class="fas fa-envelope fa-2x"></i>
+                        </a>
+                        <a href="https://github.com/Mohammed-Borham" class="text-gray-700 contact-icon" title="GitHub" target="_blank">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                        <a href="https://wa.me/201067936986" class="text-gray-700 contact-icon" title="WhatsApp" target="_blank">
+                            <i class="fab fa-whatsapp fa-2x"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -798,9 +699,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-6">
+    <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Mohammed Borham. All rights reserved.</p>
+            <div class="mt-4 flex justify-center gap-6">
+                <a href="https://linkedin.com/in/mohammed-borham" class="hover:text-blue-400 transition-colors" target="_blank">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <a href="https://github.com/Mohammed-Borham" class="hover:text-blue-400 transition-colors" target="_blank">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="mailto:borham.mohammad@gmail.com" class="hover:text-blue-400 transition-colors">
+                    <i class="fas fa-envelope fa-lg"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
@@ -826,6 +738,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                closeMobileMenu();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
@@ -842,7 +755,7 @@
             const parallaxElements = document.querySelectorAll('.parallax-bg');
             
             parallaxElements.forEach(element => {
-                const speed = 0.5;
+                const speed = 0.3;
                 const yPos = -(scrolled * speed);
                 element.style.transform = `translateY(${yPos}px)`;
             });
@@ -867,10 +780,10 @@
         function handleNavbarScroll() {
             const navbar = document.querySelector('nav');
             if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
                 navbar.style.backdropFilter = 'blur(10px)';
             } else {
-                navbar.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 1)';
                 navbar.style.backdropFilter = 'none';
             }
         }
@@ -899,6 +812,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             handleScrollReveal();
             handleNavbarScroll();
+            
+            // Animate skills on load
+            const skills = document.querySelectorAll('#skills-list .skill-chip');
+            skills.forEach((chip, i) => {
+                chip.style.opacity = 0;
+                chip.style.transform = 'translateY(20px)';
+                chip.style.transition = 'opacity 0.5s cubic-bezier(.4,0,.2,1), transform 0.5s cubic-bezier(.4,0,.2,1)';
+                setTimeout(() => {
+                    chip.style.opacity = 1;
+                    chip.style.transform = 'translateY(0)';
+                }, 50 * i);
+            });
         });
 
         // Close mobile menu when clicking outside
