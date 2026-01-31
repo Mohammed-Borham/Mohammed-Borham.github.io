@@ -193,39 +193,29 @@
         
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            /* Navigation fixes for mobile */
-            nav {
-                padding: 0.5rem 0;
-            }
-            
             nav .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
             }
             
             nav h1 {
-                font-size: 1rem;
-                margin-right: 0.5rem;
+                font-size: 1.125rem;
+                width: 100%;
             }
             
             .hamburger {
-                display: block;
-                cursor: pointer;
-                z-index: 51;
-                flex-shrink: 0;
-            }
-            
-            .hamburger span {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background: #212529;
-                margin: 5px 0;
-                transition: 0.3s;
+                display: block !important;
+                align-self: flex-end;
+                position: absolute;
+                top: 0.75rem;
+                right: 1rem;
             }
             
             .desktop-nav {
-                display: none;
+                display: none !important;
             }
             
             .hero-section {
@@ -306,8 +296,8 @@
 <body class="smooth-scroll">
     <!-- Navigation -->
     <nav class="bg-white text-gray-800 fixed w-full top-0 z-10 shadow-md border-b border-gray-200">
-        <div class="container mx-auto px-3 py-3 flex justify-between items-center">
-            <h1 class="text-base md:text-xl font-bold text-gray-900">M. Borham</h1>
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center gap-2">
+            <h1 class="text-lg md:text-xl font-bold text-gray-900 flex-shrink-0">Mohammed Borham</h1>
             
             <!-- Desktop Navigation -->
             <ul class="desktop-nav flex space-x-6">
