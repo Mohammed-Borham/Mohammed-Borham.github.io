@@ -193,20 +193,45 @@
         
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            /* Fix navigation on mobile */
-            nav h1 {
-                font-size: 0.9rem !important;
-                max-width: 140px;
+            /* Navigation fixes for mobile */
+            nav {
+                padding: 0.5rem 0;
             }
             
-            nav .hamburger {
-                margin-left: auto;
+            nav .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            nav h1 {
+                font-size: 1rem;
+                margin-right: 0.5rem;
+            }
+            
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                z-index: 51;
+                flex-shrink: 0;
+            }
+            
+            .hamburger span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background: #212529;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+            
+            .desktop-nav {
+                display: none;
             }
             
             .hero-section {
                 min-height: 100vh;
                 padding: 2rem 0;
-                margin-top: 60px;
+                margin-top: 70px;
             }
             
             /* Hide background icons on mobile for cleaner look */
@@ -240,12 +265,6 @@
                 text-decoration: none;
             }
             
-            .hamburger {
-                display: block;
-                cursor: pointer;
-                z-index: 51;
-            }
-            
             .hamburger span {
                 display: block;
                 width: 25px;
@@ -265,10 +284,6 @@
             
             .hamburger.active span:nth-child(3) {
                 transform: rotate(45deg) translate(-5px, -6px);
-            }
-            
-            .desktop-nav {
-                display: none;
             }
             
             .profile-image {
@@ -292,7 +307,7 @@
     <!-- Navigation -->
     <nav class="bg-white text-gray-800 fixed w-full top-0 z-10 shadow-md border-b border-gray-200">
         <div class="container mx-auto px-3 py-3 flex justify-between items-center">
-            <h1 class="text-sm font-bold text-gray-900 whitespace-nowrap">Mohammed Borham</h1>
+            <h1 class="text-base md:text-xl font-bold text-gray-900">M. Borham</h1>
             
             <!-- Desktop Navigation -->
             <ul class="desktop-nav flex space-x-6">
