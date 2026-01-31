@@ -212,6 +212,25 @@
                 position: absolute;
                 top: 0.75rem;
                 right: 1rem;
+                cursor: pointer;
+                z-index: 60;
+            }
+            
+            /* Initial Pulse Animation - يلفت الانتباه لما الصفحة تفتح */
+            .hamburger-pulse {
+                animation: hamburgerPulse 2s ease-in-out 3;
+                animation-delay: 0.5s;
+            }
+            
+            @keyframes hamburgerPulse {
+                0%, 100% { 
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.7);
+                }
+                50% { 
+                    transform: scale(1.15);
+                    box-shadow: 0 0 0 10px rgba(0, 102, 204, 0);
+                }
             }
             
             .desktop-nav {
@@ -236,44 +255,89 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(227, 242, 253, 0.98) 100%);
+                backdrop-filter: blur(20px);
                 z-index: 50;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
             }
             
             .mobile-menu.active {
                 display: flex;
+                animation: slideInMenu 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            }
+            
+            @keyframes slideInMenu {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
             }
             
             .mobile-menu a {
                 font-size: 1.5rem;
+                font-weight: 600;
                 margin: 1rem 0;
                 color: #212529;
                 text-decoration: none;
+                padding: 1rem 2rem;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            
+            /* Staggered animation for menu items */
+            .mobile-menu.active a:nth-child(1) { animation: slideInItem 0.4s ease forwards 0.1s; }
+            .mobile-menu.active a:nth-child(2) { animation: slideInItem 0.4s ease forwards 0.15s; }
+            .mobile-menu.active a:nth-child(3) { animation: slideInItem 0.4s ease forwards 0.2s; }
+            .mobile-menu.active a:nth-child(4) { animation: slideInItem 0.4s ease forwards 0.25s; }
+            .mobile-menu.active a:nth-child(5) { animation: slideInItem 0.4s ease forwards 0.3s; }
+            .mobile-menu.active a:nth-child(6) { animation: slideInItem 0.4s ease forwards 0.35s; }
+            
+            @keyframes slideInItem {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .mobile-menu a:hover {
+                background: #0066CC;
+                color: #FFFFFF;
+                transform: scale(1.05);
             }
             
             .hamburger span {
                 display: block;
                 width: 25px;
                 height: 3px;
-                background: #212529;
-                margin: 5px 0;
-                transition: 0.3s;
+                background: #0066CC;
+                margin: 4px 0;
+                transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                border-radius: 3px;
             }
             
             .hamburger.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
+                transform: rotate(45deg) translate(8px, 8px);
+                background: #0066CC;
             }
             
             .hamburger.active span:nth-child(2) {
                 opacity: 0;
+                transform: scale(0);
             }
             
             .hamburger.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
+                transform: rotate(-45deg) translate(8px, -8px);
+                background: #0066CC;
             }
             
             .profile-image {
@@ -306,13 +370,13 @@
                 <li><a href="#projects" class="nav-link hover:text-blue-600">Projects</a></li>
                 <li><a href="#services" class="nav-link hover:text-blue-600">Services</a></li>
                 <li><a href="#contact" class="nav-link hover:text-blue-600">Contact</a></li>
-                <li><a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="nav-link border-2 border-blue-600 text-blue-600 px-3 py-1 rounded-full text-sm hover:bg-blue-600 hover:text-white transition-all">
+                <li><a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" class="nav-link border-2 border-blue-600 text-blue-600 px-3 py-1 rounded-full text-sm hover:bg-blue-600 hover:text-white transition-all">
                     <i class="fas fa-download mr-1"></i>CV
                 </a></li>
             </ul>
             
             <!-- Mobile Hamburger -->
-            <div class="hamburger" onclick="toggleMobileMenu()">
+            <div class="hamburger hamburger-pulse" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -327,7 +391,7 @@
         <a href="#projects" onclick="closeMobileMenu()">Projects</a>
         <a href="#services" onclick="closeMobileMenu()">Services</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-        <a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" onclick="closeMobileMenu()">
+        <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" onclick="closeMobileMenu()">
             <i class="fas fa-download mr-2"></i>Download CV
         </a>
     </div>
@@ -443,7 +507,7 @@
             <p class="text-lg md:text-xl mb-6 scroll-reveal text-gray-700">Building scalable, automated, and secure cloud infrastructure.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal">
                 <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-full btn-hover hover:bg-blue-700 shadow-lg">Get in Touch</a>
-                <a href="https://drive.google.com/file/d/11O8OsoUrMGh4Qu4LT_e8HhpOyDsNuD-I/view?usp=sharing" target="_blank" class="bg-white border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full btn-hover hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg">
+                <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" class="bg-white border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full btn-hover hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg">
                     <i class="fas fa-download mr-2"></i>Download CV
                 </a>
             </div>
@@ -456,7 +520,7 @@
             <h2 class="text-4xl font-bold mb-12 text-center scroll-reveal text-gray-900">About Me</h2>
             <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/3 mb-6 md:mb-0 scroll-reveal">
-                    <img src="images/1.jpeg" alt="Profile Picture" class="profile-image mx-auto hover-scale">
+                    <img src="profile.png" alt="Profile Picture" class="profile-image mx-auto hover-scale">
                 </div>
                 <div class="md:w-2/3 scroll-reveal">
                     <p class="text-lg mb-4 text-gray-700 leading-relaxed">
@@ -722,7 +786,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Mohammed Borham. All rights reserved.</p>
+            <p>&copy; 2024 – Present | Mohammed Borham</p>
             <div class="mt-4 flex justify-center gap-6">
                 <a href="https://linkedin.com/in/mohammed-borham" class="hover:text-blue-400 transition-colors" target="_blank">
                     <i class="fab fa-linkedin fa-lg"></i>
@@ -745,6 +809,9 @@
             
             mobileMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
+            
+            // Remove pulse animation after first interaction
+            hamburger.classList.remove('hamburger-pulse');
         }
 
         function closeMobileMenu() {
