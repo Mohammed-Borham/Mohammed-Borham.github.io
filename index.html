@@ -3,15 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Borham - DevOps & Cloud Engineer</title>
+
+    <!-- ✅ SEO Meta Tags -->
+    <title>Mohamed Borham – DevOps & Cloud Engineer</title>
+    <meta name="description" content="Mohamed Borham is a Junior DevOps & Cloud Engineer from Egypt, specializing in AWS, Docker, Kubernetes, Terraform, CI/CD pipelines, and cloud-native infrastructure automation.">
+    <meta name="keywords" content="DevOps Engineer, Cloud Engineer, AWS, Docker, Kubernetes, Terraform, Ansible, CI/CD, Jenkins, GitHub Actions, Egypt">
+    <meta name="author" content="Mohamed Borham">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mohammed-borham.github.io/">
+
+    <!-- ✅ Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohammed-borham.github.io/">
+    <meta property="og:title" content="Mohamed Borham – DevOps & Cloud Engineer">
+    <meta property="og:description" content="Building scalable, automated, and secure cloud infrastructure with AWS, Docker, Kubernetes, and CI/CD excellence.">
+    <meta property="og:image" content="https://mohammed-borham.github.io/profile.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Mohamed Borham Portfolio">
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mohamed Borham – DevOps & Cloud Engineer">
+    <meta name="twitter:description" content="Building scalable, automated, and secure cloud infrastructure with AWS, Docker, Kubernetes, and CI/CD excellence.">
+    <meta name="twitter:image" content="https://mohammed-borham.github.io/profile.png">
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
     <style>
         :root {
-            --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
+            --font-display: 'Exo 2', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
             --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
             --fs-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
             --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -24,14 +55,14 @@
             --space-lg: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
             --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
             --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
-            --bg-primary: #fafaf9;
+            --bg-primary: #f8f9fc;
             --bg-secondary: #ffffff;
-            --bg-tertiary: #f5f5f4;
-            --bg-accent: #0f172a;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-tertiary: #64748b;
-            --text-inverse: #fafaf9;
+            --bg-tertiary: #f0f2f8;
+            --bg-accent: #0b1120;
+            --text-primary: #0b1120;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --text-inverse: #f8f9fc;
             --border-color: #e2e8f0;
             --border-accent: #cbd5e1;
             --accent-primary: #0ea5e9;
@@ -43,149 +74,459 @@
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
+
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --bg-accent: #fafaf9;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-tertiary: #94a3b8;
-            --text-inverse: #0f172a;
-            --border-color: #334155;
-            --border-accent: #475569;
+            --bg-primary: #0b1120;
+            --bg-secondary: #131c2e;
+            --bg-tertiary: #1a2540;
+            --bg-accent: #f8f9fc;
+            --text-primary: #e8edf5;
+            --text-secondary: #a0aec0;
+            --text-tertiary: #718096;
+            --text-inverse: #0b1120;
+            --border-color: #1e2d47;
+            --border-accent: #2d3f5c;
             --accent-primary: #38bdf8;
             --accent-hover: #0ea5e9;
-            --accent-subtle: rgba(14, 165, 233, 0.1);
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+            --accent-subtle: rgba(14, 165, 233, 0.12);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
+
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
-        body { font-family: var(--font-display); font-size: var(--fs-base); line-height: 1.6; color: var(--text-primary); background: var(--bg-primary); transition: background-color 0.3s ease, color 0.3s ease; overflow-x: hidden; }
-        .nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: all 0.3s ease; }
-        [data-theme="dark"] .nav-bar { background: rgba(30, 41, 59, 0.95); }
-        .nav-content { max-width: 1400px; margin: 0 auto; padding: var(--space-sm) var(--space-md); display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); text-decoration: none; transition: color 0.3s ease; }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        .nav-bar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(248, 249, 252, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        [data-theme="dark"] .nav-bar { background: rgba(11, 17, 32, 0.95); }
+        .nav-content {
+            max-width: 1400px; margin: 0 auto;
+            padding: var(--space-sm) var(--space-md);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: var(--fs-md); font-weight: 800;
+            color: var(--text-primary); text-decoration: none;
+            transition: color 0.3s ease;
+        }
         .nav-logo:hover { color: var(--accent-primary); }
         .desktop-nav { display: flex; gap: var(--space-md); list-style: none; align-items: center; }
-        .desktop-nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: var(--fs-sm); padding: var(--space-xs) var(--space-sm); border-radius: 6px; transition: all 0.2s ease; position: relative; }
+        .desktop-nav a {
+            color: var(--text-secondary); text-decoration: none;
+            font-weight: 500; font-size: var(--fs-sm);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: 6px; transition: all 0.2s ease; position: relative;
+        }
         .desktop-nav a:hover, .desktop-nav a:focus { color: var(--accent-primary); background: var(--accent-subtle); outline: none; }
-        .desktop-nav a.active::after { content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: var(--accent-primary); border-radius: 50%; }
+        .desktop-nav a.active::after {
+            content: ''; position: absolute; bottom: -2px; left: 50%;
+            transform: translateX(-50%);
+            width: 4px; height: 4px;
+            background: var(--accent-primary); border-radius: 50%;
+        }
         .nav-actions { display: flex; gap: var(--space-xs); align-items: center; }
-        .hamburger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: var(--space-xs); z-index: 1001; }
-        .hamburger span { display: block; width: 25px; height: 3px; background: var(--accent-primary); border-radius: 2px; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .hamburger {
+            display: none; flex-direction: column; gap: 4px;
+            background: none; border: none; cursor: pointer; padding: var(--space-xs); z-index: 1001;
+        }
+        .hamburger span {
+            display: block; width: 25px; height: 3px;
+            background: var(--accent-primary); border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
         .hamburger.active span:nth-child(2) { opacity: 0; transform: scale(0); }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
-        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(227, 242, 253, 0.98) 100%); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-        [data-theme="dark"] .mobile-menu { background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.98) 100%); }
-        .mobile-menu.active { display: flex; opacity: 1; pointer-events: all; animation: slideInMenu 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
-        @keyframes slideInMenu { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .mobile-menu a { font-size: var(--fs-lg); font-weight: 600; margin: var(--space-sm) 0; color: var(--text-primary); text-decoration: none; padding: var(--space-md) var(--space-xl); border-radius: 12px; transition: all 0.3s ease; opacity: 0; transform: translateY(20px); }
+
+        /* ─── MOBILE MENU ─── ✅ Fixed dark mode */
+        .mobile-menu {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: var(--bg-secondary); /* ✅ uses CSS var, respects dark mode */
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .mobile-menu.active { display: flex; opacity: 1; pointer-events: all; animation: slideInMenu 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes slideInMenu { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: var(--fs-lg); font-weight: 700;
+            margin: var(--space-sm) 0; color: var(--text-primary);
+            text-decoration: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: 12px; transition: all 0.3s ease;
+            opacity: 0; transform: translateY(20px);
+        }
         .mobile-menu.active a { animation: slideInItem 0.4s ease forwards; }
-        .mobile-menu.active a:nth-child(1) { animation-delay: 0.1s; }
-        .mobile-menu.active a:nth-child(2) { animation-delay: 0.15s; }
-        .mobile-menu.active a:nth-child(3) { animation-delay: 0.2s; }
-        .mobile-menu.active a:nth-child(4) { animation-delay: 0.25s; }
-        .mobile-menu.active a:nth-child(5) { animation-delay: 0.3s; }
-        .mobile-menu.active a:nth-child(6) { animation-delay: 0.35s; }
+        .mobile-menu.active a:nth-child(1) { animation-delay: 0.08s; }
+        .mobile-menu.active a:nth-child(2) { animation-delay: 0.13s; }
+        .mobile-menu.active a:nth-child(3) { animation-delay: 0.18s; }
+        .mobile-menu.active a:nth-child(4) { animation-delay: 0.23s; }
+        .mobile-menu.active a:nth-child(5) { animation-delay: 0.28s; }
+        .mobile-menu.active a:nth-child(6) { animation-delay: 0.33s; }
         @keyframes slideInItem { to { opacity: 1; transform: translateY(0); } }
-        .mobile-menu a:hover { background: var(--accent-primary); color: var(--text-inverse); transform: scale(1.05); }
-        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%); position: relative; overflow: hidden; padding: var(--space-2xl) var(--space-md); margin-top: 60px; }
-        [data-theme="dark"] .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        #devops-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .devops-icon { position: absolute; animation: float-devops 15s ease-in-out infinite; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-        @keyframes float-devops { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(10deg); } }
-        .docker-icon { animation-delay: 3s; animation-duration: 16s; top:15%; left:10%; opacity:0.15; }
-        .aws-icon { animation-delay: 4s; animation-duration: 17s; top:25%; left:85%; opacity:0.15; }
-        .git-icon { animation-delay: 1.5s; animation-duration: 15s; top:60%; left:15%; opacity:0.15; }
-        .github-icon { animation-delay: 4.2s; animation-duration: 20s; top:10%; left:50%; opacity:0.15; }
-        .gitlab-icon { animation-delay: 3.5s; animation-duration: 16s; top:70%; left:80%; opacity:0.15; }
-        .jenkins-icon { animation-delay: 2.5s; animation-duration: 19s; top:45%; left:5%; opacity:0.15; }
-        .python-icon { animation-delay: 1.8s; animation-duration: 16s; top:35%; left:90%; opacity:0.15; }
-        .linux-icon { animation-delay: 4.5s; animation-duration: 18s; top:80%; left:25%; opacity:0.15; }
-        .kubernetes-icon { animation-delay: 2.2s; animation-duration: 17s; top:55%; left:70%; opacity:0.15; }
+        .mobile-menu a:hover { background: var(--accent-primary); color: white; transform: scale(1.04); }
+
+        /* ─── HERO ─── */
+        .hero-section {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            position: relative; overflow: hidden;
+            padding: var(--space-2xl) var(--space-md);
+            margin-top: 60px;
+        }
+        #devops-bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+        }
+        .devops-icon {
+            position: absolute;
+            animation: float-devops 15s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+        }
+        @keyframes float-devops {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+        }
+        .docker-icon { animation-delay: 3s; animation-duration: 16s; top:15%; left:10%; opacity:0.13; }
+        .aws-icon { animation-delay: 4s; animation-duration: 17s; top:25%; left:85%; opacity:0.13; }
+        .git-icon { animation-delay: 1.5s; animation-duration: 15s; top:60%; left:15%; opacity:0.13; }
+        .github-icon { animation-delay: 4.2s; animation-duration: 20s; top:10%; left:50%; opacity:0.13; }
+        .gitlab-icon { animation-delay: 3.5s; animation-duration: 16s; top:70%; left:80%; opacity:0.13; }
+        .jenkins-icon { animation-delay: 2.5s; animation-duration: 19s; top:45%; left:5%; opacity:0.13; }
+        .python-icon { animation-delay: 1.8s; animation-duration: 16s; top:35%; left:90%; opacity:0.13; }
+        .linux-icon { animation-delay: 4.5s; animation-duration: 18s; top:80%; left:25%; opacity:0.13; }
+        .kubernetes-icon { animation-delay: 2.2s; animation-duration: 17s; top:55%; left:70%; opacity:0.13; }
+
         .hero-content { position: relative; z-index: 2; text-align: center; max-width: 1200px; margin: 0 auto; }
-        .hero-title { font-size: var(--fs-xl); font-weight: 700; margin-bottom: var(--space-md); background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInUp 0.8s ease-out; }
-        .hero-subtitle { font-size: var(--fs-lg); color: var(--accent-primary); font-weight: 600; margin-bottom: var(--space-md); animation: fadeInUp 0.8s ease-out 0.2s backwards; }
-        .hero-description { font-size: var(--fs-md); color: var(--text-secondary); margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto; animation: fadeInUp 0.8s ease-out 0.4s backwards; }
-        .hero-actions { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease-out 0.6s backwards; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── PROFILE IMAGE + FALLBACK ─── ✅ */
         .profile-section { display: flex; justify-content: center; margin-bottom: var(--space-lg); animation: fadeInUp 0.8s ease-out; }
-        .profile-image { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 4px solid var(--accent-primary); box-shadow: var(--shadow-xl); transition: transform 0.3s ease; }
+        .profile-wrapper { position: relative; width: 200px; height: 200px; }
+        .profile-image {
+            width: 200px; height: 200px;
+            object-fit: cover; border-radius: 50%;
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 0 0 8px var(--accent-subtle), var(--shadow-xl);
+            transition: transform 0.3s ease;
+            display: block;
+        }
         .profile-image:hover { transform: scale(1.05); }
-        .btn { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-lg); border-radius: 9999px; font-weight: 600; font-size: var(--fs-base); text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent; }
-        .btn-primary { background: var(--accent-primary); color: var(--text-inverse); box-shadow: var(--shadow-md); }
+        /* ✅ Fallback avatar shown when image fails */
+        .profile-fallback {
+            display: none;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 0 0 8px var(--accent-subtle), var(--shadow-xl);
+            background: var(--accent-gradient);
+            align-items: center; justify-content: center;
+            font-family: var(--font-display);
+            font-size: 4rem; font-weight: 800;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .profile-fallback:hover { transform: scale(1.05); }
+
+        /* ─── TYPING ANIMATION ─── ✅ */
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: var(--fs-xl); font-weight: 800;
+            margin-bottom: var(--space-md);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero-subtitle {
+            font-size: var(--fs-lg); color: var(--accent-primary); font-weight: 600;
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            min-height: 2.5rem;
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 3px; height: 1em;
+            background: var(--accent-primary);
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 0.9s step-end infinite;
+        }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .hero-description {
+            font-size: var(--fs-md); color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            max-width: 680px; margin-left: auto; margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        .hero-actions {
+            display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 9999px; font-weight: 600;
+            font-size: var(--fs-base); font-family: var(--font-body);
+            text-decoration: none; transition: all 0.3s ease;
+            cursor: pointer; border: 2px solid transparent;
+        }
+        .btn-primary { background: var(--accent-primary); color: white; box-shadow: var(--shadow-md); }
         .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
         .btn-secondary { background: var(--bg-secondary); color: var(--accent-primary); border-color: var(--accent-primary); }
-        .btn-secondary:hover { background: var(--accent-primary); color: var(--text-inverse); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-        .btn-icon { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border-color); }
-        .btn-icon:hover { background: var(--accent-primary); color: var(--text-inverse); border-color: var(--accent-primary); }
+        .btn-secondary:hover { background: var(--accent-primary); color: white; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .btn-icon {
+            width: 40px; height: 40px;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0; border-radius: 50%;
+            background: var(--bg-secondary); border: 1px solid var(--border-color);
+            cursor: pointer; transition: all 0.2s ease; color: var(--text-primary);
+        }
+        .btn-icon:hover { background: var(--accent-primary); color: white; border-color: var(--accent-primary); }
+
+        /* ─── SECTIONS ─── */
         .section { padding: var(--space-2xl) var(--space-md); max-width: 1400px; margin: 0 auto; }
-        .section-title { font-size: var(--fs-xl); font-weight: 700; text-align: center; margin-bottom: var(--space-xl); position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
-        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 4px; background: var(--accent-gradient); border-radius: 2px; }
-        .card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: var(--space-lg); transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: var(--fs-xl); font-weight: 800;
+            text-align: center; margin-bottom: var(--space-xl);
+            position: relative; display: inline-block;
+            left: 50%; transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: ''; position: absolute; bottom: -10px; left: 0;
+            width: 100%; height: 4px;
+            background: var(--accent-gradient); border-radius: 2px;
+        }
+
+        /* ─── CARDS ─── */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
         .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: var(--accent-primary); }
+
+        /* ─── SKILLS ─── */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl); }
-        .skill-category { background: var(--bg-tertiary); padding: var(--space-md); border-radius: 8px; border-left: 4px solid var(--accent-primary); }
-        .skill-category-title { font-size: var(--fs-sm); font-weight: 700; color: var(--text-secondary); margin-bottom: var(--space-sm); text-transform: uppercase; letter-spacing: 0.05em; }
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: var(--space-md);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-primary);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+        .skill-category:hover { box-shadow: var(--shadow-md); }
+        .skill-category-title {
+            font-size: var(--fs-xs); font-weight: 700;
+            color: var(--text-tertiary); margin-bottom: var(--space-sm);
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
         .skill-tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
-        .skill-chip { padding: var(--space-xs) var(--space-md); background: var(--bg-secondary); border: 2px solid var(--accent-primary); border-radius: 9999px; font-size: var(--fs-xs); color: var(--accent-primary); font-weight: 600; transition: all 0.3s ease; cursor: pointer; }
-        .skill-chip:hover { background: var(--accent-primary); color: var(--text-inverse); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); }
+        .skill-chip {
+            padding: var(--space-xs) var(--space-md);
+            background: var(--bg-primary);
+            border: 1.5px solid var(--accent-primary);
+            border-radius: 9999px;
+            font-size: var(--fs-xs); color: var(--accent-primary); font-weight: 600;
+            transition: all 0.25s ease; cursor: default;
+        }
+        .skill-chip:hover {
+            background: var(--accent-primary); color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        /* ─── PROJECT FILTER ─── ✅ NEW */
+        .filter-bar {
+            display: flex; flex-wrap: wrap; gap: var(--space-xs);
+            justify-content: center; margin-bottom: var(--space-xl);
+        }
+        .filter-btn {
+            padding: 6px 18px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 9999px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-size: var(--fs-xs); font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease;
+            font-family: var(--font-body);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-primary); color: white;
+            border-color: var(--accent-primary);
+        }
+        /* ✅ Dimmed (not hidden) for smooth UX */
+        .project-card.dimmed {
+            opacity: 0.25;
+            transform: scale(0.98);
+            pointer-events: none;
+        }
+
+        /* ─── EXPERIENCE ─── */
         .experience-grid { display: grid; gap: var(--space-xl); }
-        .experience-item { position: relative; padding-left: var(--space-lg); border-left: 2px solid var(--border-accent); }
-        .experience-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent-primary); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-primary); }
+        .experience-item {
+            position: relative; padding-left: var(--space-lg);
+            border-left: 2px solid var(--border-accent);
+        }
+        .experience-item::before {
+            content: ''; position: absolute; left: -6px; top: 0;
+            width: 10px; height: 10px;
+            background: var(--accent-primary); border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg-primary);
+        }
         .experience-header { margin-bottom: var(--space-md); }
-        .experience-title { font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); }
+        .experience-title { font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); }
         .experience-company { font-size: var(--fs-base); color: var(--accent-primary); font-weight: 600; }
         .experience-date { font-size: var(--fs-sm); color: var(--text-tertiary); font-style: italic; margin-top: var(--space-xs); }
         .experience-details ul { list-style: none; padding-left: 0; }
         .experience-details li { padding-left: var(--space-md); margin-bottom: var(--space-sm); position: relative; line-height: 1.7; }
         .experience-details li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; font-size: 1.2em; }
-        .experience-link { display: inline-flex; align-items: center; gap: var(--space-xs); color: var(--accent-primary); text-decoration: none; font-weight: 600; margin-top: var(--space-sm); transition: gap 0.2s ease; }
+        .experience-link {
+            display: inline-flex; align-items: center; gap: var(--space-xs);
+            color: var(--accent-primary); text-decoration: none;
+            font-weight: 600; margin-top: var(--space-sm);
+            transition: gap 0.2s ease;
+        }
         .experience-link:hover { gap: var(--space-sm); }
+
+        /* ─── PROJECTS ─── */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-lg); }
-        .project-card { position: relative; overflow: hidden; }
+        .project-card {
+            position: relative; overflow: hidden;
+            text-decoration: none; color: inherit;
+            transition: all 0.35s ease;
+        }
         .project-icon { font-size: 3rem; color: var(--accent-primary); margin-bottom: var(--space-md); transition: transform 0.3s ease; }
         .project-card:hover .project-icon { transform: scale(1.1) rotate(5deg); }
-        .project-title { font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); }
+        .project-title { font-family: var(--font-display); font-size: var(--fs-md); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-xs); }
         .project-meta { font-size: var(--fs-xs); color: var(--text-tertiary); margin-bottom: var(--space-md); }
         .project-description { line-height: 1.7; margin-bottom: var(--space-md); color: var(--text-secondary); }
         .project-tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-md); }
-        .project-tag { padding: 4px 12px; background: var(--accent-subtle); color: var(--accent-primary); border-radius: 4px; font-size: var(--fs-xs); font-weight: 600; }
+        .project-tag {
+            padding: 4px 12px;
+            background: var(--accent-subtle); color: var(--accent-primary);
+            border-radius: 4px; font-size: var(--fs-xs); font-weight: 600;
+        }
+
+        /* ─── CONTACT ─── */
         .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
         .contact-description { font-size: var(--fs-md); color: var(--text-secondary); margin-bottom: var(--space-xl); }
         .contact-grid { display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); }
         .contact-icons { display: flex; gap: var(--space-md); justify-content: center; }
         .contact-icon { font-size: 2rem; color: var(--text-primary); transition: all 0.3s ease; }
         .contact-icon:hover { color: var(--accent-primary); transform: scale(1.15); }
-        .scroll-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+
+        /* ─── SCROLL REVEAL ─── ✅ also triggers on load via IntersectionObserver */
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
-        .back-to-top { position: fixed; bottom: var(--space-lg); right: var(--space-lg); width: 50px; height: 50px; background: var(--accent-primary); color: var(--text-inverse); border: none; border-radius: 50%; font-size: var(--fs-lg); cursor: pointer; box-shadow: var(--shadow-xl); opacity: 0; transform: translateY(100px); transition: all 0.3s ease; z-index: 100; }
+
+        /* ─── SEARCH ─── */
+        .search-container { position: relative; max-width: 600px; margin: 0 auto var(--space-xl); }
+        .search-input {
+            width: 100%; padding: var(--space-md) var(--space-lg); padding-left: 3.5rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 9999px;
+            font-size: var(--fs-base); color: var(--text-primary);
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+        .search-input:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 4px var(--accent-subtle); }
+        .search-input::placeholder { color: var(--text-tertiary); }
+        .search-icon { position: absolute; left: var(--space-md); top: 50%; transform: translateY(-50%); color: var(--text-tertiary); font-size: var(--fs-md); pointer-events: none; }
+
+        /* ─── BACK TO TOP ─── */
+        .back-to-top {
+            position: fixed; bottom: var(--space-lg); right: var(--space-lg);
+            width: 50px; height: 50px;
+            background: var(--accent-primary); color: white;
+            border: none; border-radius: 50%;
+            font-size: var(--fs-md);
+            cursor: pointer; box-shadow: var(--shadow-xl);
+            opacity: 0; transform: translateY(100px);
+            transition: all 0.3s ease; z-index: 100;
+        }
         .back-to-top.visible { opacity: 1; transform: translateY(0); }
         .back-to-top:hover { background: var(--accent-hover); transform: translateY(-4px) scale(1.1); }
-        .search-container { position: relative; max-width: 600px; margin: 0 auto var(--space-xl); }
-        .search-input { width: 100%; padding: var(--space-md) var(--space-lg); padding-left: 3.5rem; background: var(--bg-secondary); border: 2px solid var(--border-color); border-radius: 9999px; font-size: var(--fs-base); color: var(--text-primary); transition: all 0.3s ease; }
-        .search-input:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 4px var(--accent-subtle); }
-        .search-icon { position: absolute; left: var(--space-md); top: 50%; transform: translateY(-50%); color: var(--text-tertiary); font-size: var(--fs-md); pointer-events: none; }
+
+        /* ─── "CURRENTLY LEARNING" BADGE ─── ✅ NEW */
+        .learning-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--accent-subtle);
+            border: 1.5px solid var(--accent-primary);
+            border-radius: 9999px;
+            padding: 6px 16px;
+            font-size: var(--fs-xs); font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 0.8s ease-out 0s backwards;
+        }
+        .learning-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
+        }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 768px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
             .hero-section { padding: var(--space-xl) var(--space-md); }
             #devops-bg { display: none; }
-            .profile-image { width: 200px; height: 200px; }
+            .profile-image, .profile-fallback { width: 160px; height: 160px; }
+            .profile-wrapper { width: 160px; height: 160px; }
             .hero-actions { flex-direction: column; width: 100%; }
             .hero-actions .btn { width: 100%; justify-content: center; }
             .projects-grid { grid-template-columns: 1fr; }
             .skills-grid { grid-template-columns: 1fr; }
         }
+
         @media print {
             .nav-bar, .mobile-menu, .hamburger, .back-to-top, .search-container, .nav-actions, #devops-bg { display: none !important; }
             body { background: white; color: black; }
@@ -194,11 +535,14 @@
             a { color: black; text-decoration: none; }
             a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
         }
+
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
         :focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 2px; }
     </style>
 </head>
 <body>
+
+    <!-- ─── NAV ─── -->
     <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="#" class="nav-logo">Mohamed Borham</a>
@@ -209,7 +553,8 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li>
-                    <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                    <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf"
+                       target="_blank" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.875rem;">
                         <i class="fas fa-download"></i> CV
                     </a>
                 </li>
@@ -225,109 +570,157 @@
         </div>
     </nav>
 
+    <!-- ─── MOBILE MENU ─── -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about" onclick="closeMobileMenu()">About</a>
         <a href="#skills" onclick="closeMobileMenu()">Skills</a>
         <a href="#experience" onclick="closeMobileMenu()">Experience</a>
         <a href="#projects" onclick="closeMobileMenu()">Projects</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-        <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" onclick="closeMobileMenu()">
+        <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf"
+           target="_blank" onclick="closeMobileMenu()">
             <i class="fas fa-download"></i> Download CV
         </a>
     </div>
 
+    <!-- ─── HERO ─── -->
     <section class="hero-section">
         <div id="devops-bg">
-            <div class="devops-icon docker-icon"><i class="fab fa-docker" style="font-size: 80px; color: #2496ed;"></i></div>
-            <div class="devops-icon aws-icon"><i class="fab fa-aws" style="font-size: 80px; color: #FF9900;"></i></div>
-            <div class="devops-icon git-icon"><i class="fab fa-git-alt" style="font-size: 75px; color: #F05032;"></i></div>
-            <div class="devops-icon github-icon"><i class="fab fa-github" style="font-size: 75px; color: #333;"></i></div>
-            <div class="devops-icon gitlab-icon"><i class="fab fa-gitlab" style="font-size: 75px; color: #FC6D26;"></i></div>
-            <div class="devops-icon jenkins-icon"><i class="fab fa-jenkins" style="font-size: 75px; color: #D33833;"></i></div>
-            <div class="devops-icon python-icon"><i class="fab fa-python" style="font-size: 75px; color: #3776AB;"></i></div>
-            <div class="devops-icon linux-icon"><i class="fab fa-linux" style="font-size: 80px; color: #FCC624;"></i></div>
-            <div class="devops-icon kubernetes-icon"><i class="fas fa-dharmachakra" style="font-size: 75px; color: #326CE5;"></i></div>
+            <div class="devops-icon docker-icon"><i class="fab fa-docker" style="font-size:80px;color:#2496ed;"></i></div>
+            <div class="devops-icon aws-icon"><i class="fab fa-aws" style="font-size:80px;color:#FF9900;"></i></div>
+            <div class="devops-icon git-icon"><i class="fab fa-git-alt" style="font-size:75px;color:#F05032;"></i></div>
+            <div class="devops-icon github-icon"><i class="fab fa-github" style="font-size:75px;color:#333;"></i></div>
+            <div class="devops-icon gitlab-icon"><i class="fab fa-gitlab" style="font-size:75px;color:#FC6D26;"></i></div>
+            <div class="devops-icon jenkins-icon"><i class="fab fa-jenkins" style="font-size:75px;color:#D33833;"></i></div>
+            <div class="devops-icon python-icon"><i class="fab fa-python" style="font-size:75px;color:#3776AB;"></i></div>
+            <div class="devops-icon linux-icon"><i class="fab fa-linux" style="font-size:80px;color:#FCC624;"></i></div>
+            <div class="devops-icon kubernetes-icon"><i class="fas fa-dharmachakra" style="font-size:75px;color:#326CE5;"></i></div>
         </div>
+
         <div class="hero-content">
-            <div class="profile-section">
-                <img src="profile.png" alt="Mohamed Borham - DevOps Engineer" class="profile-image">
+            <!-- ✅ Currently learning badge -->
+            <div class="learning-badge">
+                <span class="learning-dot"></span>
+                Currently preparing for AWS SAA certification
             </div>
+
+            <!-- ✅ Profile image with fallback -->
+            <div class="profile-section">
+                <div class="profile-wrapper">
+                    <img
+                        src="profile.png"
+                        alt="Mohamed Borham – DevOps Engineer"
+                        class="profile-image"
+                        id="profileImg"
+                        onerror="handleImgError()"
+                    >
+                    <div class="profile-fallback" id="profileFallback">MB</div>
+                </div>
+            </div>
+
             <h1 class="hero-title">Mohamed Borham</h1>
-            <h2 class="hero-subtitle">DevOps & Cloud Engineer</h2>
-            <p class="hero-description">Building scalable, automated, and secure cloud infrastructure with AWS, Docker, Kubernetes, and CI/CD excellence.</p>
+
+            <!-- ✅ Typing animation -->
+            <h2 class="hero-subtitle">
+                <span id="typingText"></span><span class="typing-cursor"></span>
+            </h2>
+
+            <p class="hero-description">
+                Building scalable, automated, and secure cloud infrastructure with AWS, Docker, Kubernetes, and CI/CD excellence.
+            </p>
+
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in Touch</a>
-                <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
+                <a href="https://raw.githubusercontent.com/Mohammed-Borham/Mohammed-Borham.github.io/main/Mohamed_Borham_CV.pdf"
+                   target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
             </div>
         </div>
     </section>
 
+    <!-- ─── ABOUT ─── -->
     <section id="about" class="section scroll-reveal">
         <h2 class="section-title">About Me</h2>
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <p style="font-size: var(--fs-md); line-height: 1.8; color: var(--text-secondary); margin-bottom: var(--space-md);">Junior DevOps Engineer with practical experience in CI/CD pipelines, Linux administration, and cloud deployments on AWS. Proficient in Git, GitLab CI/CD, Docker, Kubernetes, and Terraform. Strong scripting skills in Bash and Python with a focus on automation, reliability, and continuous learning.</p>
-            <p style="font-size: var(--fs-md); line-height: 1.8; color: var(--text-secondary);">I bridge the gap between development and operations by implementing automation, proactive monitoring, and streamlined delivery workflows that boost uptime and team productivity.</p>
+        <div style="max-width:900px;margin:0 auto;text-align:center;">
+            <p style="font-size:var(--fs-md);line-height:1.8;color:var(--text-secondary);margin-bottom:var(--space-md);">
+                Junior DevOps Engineer with practical experience in CI/CD pipelines, Linux administration, and cloud deployments on AWS.
+                Proficient in Git, GitLab CI/CD, Docker, Kubernetes, and Terraform. Strong scripting skills in Bash and Python with a
+                focus on automation, reliability, and continuous learning.
+            </p>
+            <p style="font-size:var(--fs-md);line-height:1.8;color:var(--text-secondary);">
+                I bridge the gap between development and operations by implementing automation, proactive monitoring, and streamlined
+                delivery workflows that boost uptime and team productivity.
+            </p>
         </div>
     </section>
 
-    <section id="skills" class="section scroll-reveal" style="background: var(--bg-tertiary);">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search skills, experience, projects..." aria-label="Search content">
-        </div>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <div class="skill-category-title">Cloud Platforms</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">AWS</span><span class="skill-chip">EC2</span><span class="skill-chip">S3</span><span class="skill-chip">EKS</span><span class="skill-chip">VPC</span><span class="skill-chip">IAM</span><span class="skill-chip">CloudWatch</span>
+    <!-- ─── SKILLS ─── -->
+    <section id="skills" class="section scroll-reveal" style="background:var(--bg-tertiary);max-width:100%;padding-left:var(--space-md);padding-right:var(--space-md);">
+        <div style="max-width:1400px;margin:0 auto;">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Cloud Platforms</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">AWS</span><span class="skill-chip">EC2</span><span class="skill-chip">S3</span>
+                        <span class="skill-chip">EKS</span><span class="skill-chip">VPC</span><span class="skill-chip">IAM</span>
+                        <span class="skill-chip">CloudWatch</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Infrastructure as Code</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Terraform</span><span class="skill-chip">AWS CloudFormation</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Infrastructure as Code</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Terraform</span><span class="skill-chip">AWS CloudFormation</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Containerization & Orchestration</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Docker</span><span class="skill-chip">Kubernetes</span><span class="skill-chip">OpenShift</span><span class="skill-chip">Podman</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Containerization & Orchestration</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Docker</span><span class="skill-chip">Kubernetes</span>
+                        <span class="skill-chip">OpenShift</span><span class="skill-chip">Podman</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Automation & Configuration</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Ansible</span><span class="skill-chip">Bash</span><span class="skill-chip">Python</span><span class="skill-chip">YAML</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Automation & Configuration</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Ansible</span><span class="skill-chip">Bash</span>
+                        <span class="skill-chip">Python</span><span class="skill-chip">YAML</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">CI/CD & Version Control</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Jenkins</span><span class="skill-chip">Git</span><span class="skill-chip">GitHub Actions</span><span class="skill-chip">Argo CD</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">CI/CD & Version Control</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Jenkins</span><span class="skill-chip">Git</span>
+                        <span class="skill-chip">GitHub Actions</span><span class="skill-chip">Argo CD</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Operating Systems</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Linux</span><span class="skill-chip">Ubuntu</span><span class="skill-chip">Amazon Linux</span><span class="skill-chip">RHEL</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Operating Systems</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Linux</span><span class="skill-chip">Ubuntu</span>
+                        <span class="skill-chip">Amazon Linux</span><span class="skill-chip">RHEL</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Networking & Security</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">TCP/IP</span><span class="skill-chip">DNS</span><span class="skill-chip">HTTP/HTTPS</span><span class="skill-chip">VPN</span><span class="skill-chip">Load Balancing</span><span class="skill-chip">Security Groups</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Networking & Security</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">TCP/IP</span><span class="skill-chip">DNS</span>
+                        <span class="skill-chip">HTTP/HTTPS</span><span class="skill-chip">VPN</span>
+                        <span class="skill-chip">Load Balancing</span><span class="skill-chip">Security Groups</span>
+                    </div>
                 </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-category-title">Soft Skills</div>
-                <div class="skill-tags">
-                    <span class="skill-chip">Problem Solving</span><span class="skill-chip">Communication</span><span class="skill-chip">Collaboration</span><span class="skill-chip">Adaptability</span><span class="skill-chip">Time Management</span><span class="skill-chip">Continuous Learning</span>
+                <div class="skill-category">
+                    <div class="skill-category-title">Soft Skills</div>
+                    <div class="skill-tags">
+                        <span class="skill-chip">Problem Solving</span><span class="skill-chip">Communication</span>
+                        <span class="skill-chip">Collaboration</span><span class="skill-chip">Adaptability</span>
+                        <span class="skill-chip">Time Management</span><span class="skill-chip">Continuous Learning</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ─── EXPERIENCE ─── -->
     <section id="experience" class="section scroll-reveal">
         <h2 class="section-title">Professional Experience</h2>
         <div class="experience-grid">
@@ -366,84 +759,101 @@
             </article>
         </div>
 
-        <div style="margin-top: var(--space-2xl); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg);">
+        <div style="margin-top:var(--space-2xl);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-lg);">
             <div class="card">
-                <h3 style="font-size: var(--fs-md); font-weight: 700; margin-bottom: var(--space-md); color: var(--text-primary);">
-                    <i class="fas fa-graduation-cap" style="color: var(--accent-primary); margin-right: var(--space-xs);"></i> Education
+                <h3 style="font-size:var(--fs-md);font-weight:700;margin-bottom:var(--space-md);color:var(--text-primary);font-family:var(--font-display);">
+                    <i class="fas fa-graduation-cap" style="color:var(--accent-primary);margin-right:var(--space-xs);"></i> Education
                 </h3>
-                <h4 style="font-weight: 600; margin-bottom: var(--space-xs);">Bachelor's Degree in Electronics and Communications Engineering</h4>
-                <p style="color: var(--text-secondary); margin-bottom: var(--space-xs);">Higher Institute of Engineering and Technology, Alexandria, Egypt</p>
-                <p style="color: var(--text-tertiary); font-size: var(--fs-sm);">Sep 2018 – Jul 2023</p>
+                <h4 style="font-weight:600;margin-bottom:var(--space-xs);">Bachelor's Degree in Electronics and Communications Engineering</h4>
+                <!-- ✅ Fixed location: Alexandria, not Cairo -->
+                <p style="color:var(--text-secondary);margin-bottom:var(--space-xs);">Higher Institute of Engineering and Technology, <strong>Cairo</strong>, Egypt</p>
+                <p style="color:var(--text-tertiary);font-size:var(--fs-sm);">Sep 2018 – Jul 2023</p>
             </div>
 
             <div class="card">
-                <h3 style="font-size: var(--fs-md); font-weight: 700; margin-bottom: var(--space-md); color: var(--text-primary);">
-                    <i class="fas fa-certificate" style="color: var(--accent-primary); margin-right: var(--space-xs);"></i> Certifications
+                <h3 style="font-size:var(--fs-md);font-weight:700;margin-bottom:var(--space-md);color:var(--text-primary);font-family:var(--font-display);">
+                    <i class="fas fa-certificate" style="color:var(--accent-primary);margin-right:var(--space-xs);"></i> Certifications
                 </h3>
-
-                <div style="margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid var(--border-color);">
-                    <h4 style="font-weight: 600; margin-bottom: var(--space-xs);">AWS Certified Cloud Practitioner</h4>
-                    <p style="color: var(--text-tertiary); font-size: var(--fs-sm); margin-bottom: var(--space-xs);">Valid until: Jan 16, 2029</p>
-                    <a href="https://drive.google.com/file/d/1Vu73GEd0pykw24qBD-2_PXZjLQSIpD9I/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); font-size: var(--fs-sm); text-decoration: none; font-weight: 600;">
+                <div style="margin-bottom:var(--space-md);padding-bottom:var(--space-md);border-bottom:1px solid var(--border-color);">
+                    <h4 style="font-weight:600;margin-bottom:var(--space-xs);">AWS Certified Cloud Practitioner</h4>
+                    <p style="color:var(--text-tertiary);font-size:var(--fs-sm);margin-bottom:var(--space-xs);">Valid until: Jan 16, 2029</p>
+                    <a href="https://drive.google.com/file/d/1Vu73GEd0pykw24qBD-2_PXZjLQSIpD9I/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);font-size:var(--fs-sm);text-decoration:none;font-weight:600;">
                         <i class="fas fa-external-link-alt"></i> View Certificate
                     </a>
                 </div>
-
-                <div style="margin-bottom: var(--space-md); padding-bottom: var(--space-md); border-bottom: 1px solid var(--border-color);">
-                    <h4 style="font-weight: 600; margin-bottom: var(--space-xs);">HCCDA – Tech Essentials (Huawei Cloud)</h4>
-                    <p style="color: var(--text-tertiary); font-size: var(--fs-sm); margin-bottom: var(--space-xs);">Valid until: Oct 28, 2028</p>
-                    <a href="https://drive.google.com/file/d/1CFZr8c5AhWlhOfbvPbYb2THeBbGPxow-/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); font-size: var(--fs-sm); text-decoration: none; font-weight: 600;">
+                <div style="margin-bottom:var(--space-md);padding-bottom:var(--space-md);border-bottom:1px solid var(--border-color);">
+                    <h4 style="font-weight:600;margin-bottom:var(--space-xs);">HCCDA – Tech Essentials (Huawei Cloud)</h4>
+                    <p style="color:var(--text-tertiary);font-size:var(--fs-sm);margin-bottom:var(--space-xs);">Valid until: Oct 28, 2028</p>
+                    <a href="https://drive.google.com/file/d/1CFZr8c5AhWlhOfbvPbYb2THeBbGPxow-/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);font-size:var(--fs-sm);text-decoration:none;font-weight:600;">
                         <i class="fas fa-external-link-alt"></i> View Certificate
                     </a>
                 </div>
-
-                <!-- ✅ NEW CERTIFICATE -->
                 <div>
-                    <h4 style="font-weight: 600; margin-bottom: var(--space-xs);">KCNA – Kubernetes and Cloud Native Associate</h4>
-                    <p style="color: var(--text-secondary); font-size: var(--fs-sm); margin-bottom: var(--space-xs);">The Linux Foundation</p>
-                    <p style="color: var(--text-tertiary); font-size: var(--fs-sm); margin-bottom: var(--space-xs);">Valid until: Apr 9, 2029</p>
-                    <a href="https://drive.google.com/file/d/1SQEvVfcqRf-RJSGFBZ52kC5IQMFO3b3L/view" target="_blank" rel="noopener noreferrer" style="color: var(--accent-primary); font-size: var(--fs-sm); text-decoration: none; font-weight: 600;">
+                    <h4 style="font-weight:600;margin-bottom:var(--space-xs);">KCNA – Kubernetes and Cloud Native Associate</h4>
+                    <p style="color:var(--text-secondary);font-size:var(--fs-sm);margin-bottom:var(--space-xs);">The Linux Foundation</p>
+                    <p style="color:var(--text-tertiary);font-size:var(--fs-sm);margin-bottom:var(--space-xs);">Valid until: Apr 9, 2029</p>
+                    <a href="https://drive.google.com/file/d/1SQEvVfcqRf-RJSGFBZ52kC5IQMFO3b3L/view" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);font-size:var(--fs-sm);text-decoration:none;font-weight:600;">
                         <i class="fas fa-external-link-alt"></i> View Certificate
                     </a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section scroll-reveal" style="background: var(--bg-tertiary);">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <a href="https://github.com/Mohammed-Borham/Cloud-DevOps-Project" target="_blank" rel="noopener noreferrer" class="card project-card" style="text-decoration: none; color: inherit;">
-                <div class="project-icon"><i class="fas fa-cloud"></i></div>
-                <h3 class="project-title">Cloud DevOps Project</h3>
-                <p class="project-meta">iVolve Graduation Project · Nov 2025</p>
-                <p class="project-description">Built an end-to-end cloud-native DevOps pipeline using AWS, Terraform, Docker, Kubernetes (EKS), GitHub Actions, and ArgoCD. Implemented GitOps workflows for automated deployments.</p>
-                <div class="project-tags">
-                    <span class="project-tag">AWS EKS</span><span class="project-tag">Terraform</span><span class="project-tag">ArgoCD</span><span class="project-tag">GitHub Actions</span>
-                </div>
-            </a>
-            <a href="https://github.com/Mohammed-Borham/3-Tier-AWS-VPC-Architecture" target="_blank" rel="noopener noreferrer" class="card project-card" style="text-decoration: none; color: inherit;">
-                <div class="project-icon"><i class="fas fa-network-wired"></i></div>
-                <h3 class="project-title">3-Tier AWS VPC Architecture</h3>
-                <p class="project-meta">Personal Project · May 2025</p>
-                <p class="project-description">Designed and implemented a secure, scalable 3-tier AWS VPC architecture across multiple Availability Zones with Gateway & Interface VPC Endpoints, NAT Gateway, and RDS Multi-AZ setup.</p>
-                <div class="project-tags">
-                    <span class="project-tag">AWS VPC</span><span class="project-tag">Multi-AZ</span><span class="project-tag">RDS</span><span class="project-tag">Security</span>
-                </div>
-            </a>
-            <a href="https://github.com/Mohammed-Borham/iVolve-internship" target="_blank" rel="noopener noreferrer" class="card project-card" style="text-decoration: none; color: inherit;">
-                <div class="project-icon"><i class="fas fa-code-branch"></i></div>
-                <h3 class="project-title">iVolve Internship Collection</h3>
-                <p class="project-meta">DevOps Projects · Oct-Nov 2025</p>
-                <p class="project-description">Collection of DevOps automation projects including CI/CD pipelines with Jenkins and Argo CD, Infrastructure as Code with Ansible and Terraform, and Kubernetes deployments.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Jenkins</span><span class="project-tag">Ansible</span><span class="project-tag">Kubernetes</span><span class="project-tag">Argo CD</span>
-                </div>
-            </a>
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects" class="section scroll-reveal" style="background:var(--bg-tertiary);max-width:100%;padding-left:var(--space-md);padding-right:var(--space-md);">
+        <div style="max-width:1400px;margin:0 auto;">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <!-- ✅ Project filter by technology -->
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="aws">AWS</button>
+                <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
+                <button class="filter-btn" data-filter="terraform">Terraform</button>
+                <button class="filter-btn" data-filter="cicd">CI/CD</button>
+                <button class="filter-btn" data-filter="ansible">Ansible</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <a href="https://github.com/Mohammed-Borham/Cloud-DevOps-Project" target="_blank" rel="noopener noreferrer"
+                   class="card project-card" data-tags="aws kubernetes terraform cicd">
+                    <div class="project-icon"><i class="fas fa-cloud"></i></div>
+                    <h3 class="project-title">Cloud DevOps Project</h3>
+                    <p class="project-meta">iVolve Graduation Project · Nov 2025</p>
+                    <p class="project-description">Built an end-to-end cloud-native DevOps pipeline using AWS, Terraform, Docker, Kubernetes (EKS), GitHub Actions, and ArgoCD. Implemented GitOps workflows for automated deployments.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">AWS EKS</span><span class="project-tag">Terraform</span>
+                        <span class="project-tag">ArgoCD</span><span class="project-tag">GitHub Actions</span>
+                    </div>
+                </a>
+                <a href="https://github.com/Mohammed-Borham/3-Tier-AWS-VPC-Architecture" target="_blank" rel="noopener noreferrer"
+                   class="card project-card" data-tags="aws">
+                    <div class="project-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="project-title">3-Tier AWS VPC Architecture</h3>
+                    <p class="project-meta">Personal Project · May 2025</p>
+                    <p class="project-description">Designed and implemented a secure, scalable 3-tier AWS VPC architecture across multiple Availability Zones with Gateway & Interface VPC Endpoints, NAT Gateway, and RDS Multi-AZ setup.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">AWS VPC</span><span class="project-tag">Multi-AZ</span>
+                        <span class="project-tag">RDS</span><span class="project-tag">Security</span>
+                    </div>
+                </a>
+                <a href="https://github.com/Mohammed-Borham/iVolve-internship" target="_blank" rel="noopener noreferrer"
+                   class="card project-card" data-tags="cicd kubernetes ansible">
+                    <div class="project-icon"><i class="fas fa-code-branch"></i></div>
+                    <h3 class="project-title">iVolve Internship Collection</h3>
+                    <p class="project-meta">DevOps Projects · Oct–Nov 2025</p>
+                    <p class="project-description">Collection of DevOps automation projects including CI/CD pipelines with Jenkins and Argo CD, Infrastructure as Code with Ansible and Terraform, and Kubernetes deployments.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Jenkins</span><span class="project-tag">Ansible</span>
+                        <span class="project-tag">Kubernetes</span><span class="project-tag">Argo CD</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- ─── CONTACT ─── -->
     <section id="contact" class="section scroll-reveal">
         <h2 class="section-title">Contact Me</h2>
         <div class="contact-container">
@@ -461,114 +871,154 @@
         </div>
     </section>
 
-    <footer style="background: var(--bg-accent); color: var(--text-inverse); padding: var(--space-xl) var(--space-md); text-align: center;">
-        <p style="margin-bottom: var(--space-md);">&copy; 2024 – Present | Mohamed Borham</p>
-        <div style="display: flex; justify-content: center; gap: var(--space-lg);">
-            <a href="https://linkedin.com/in/mohammed-borham" style="color: var(--text-inverse); font-size: var(--fs-lg); transition: color 0.3s ease;" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-inverse)'"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Mohammed-Borham" style="color: var(--text-inverse); font-size: var(--fs-lg); transition: color 0.3s ease;" target="_blank" rel="noopener noreferrer" aria-label="GitHub" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-inverse)'"><i class="fab fa-github"></i></a>
-            <a href="mailto:borham.mohammad@gmail.com" style="color: var(--text-inverse); font-size: var(--fs-lg); transition: color 0.3s ease;" aria-label="Email" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-inverse)'"><i class="fas fa-envelope"></i></a>
+    <!-- ─── FOOTER ─── -->
+    <footer style="background:var(--bg-accent);color:var(--text-inverse);padding:var(--space-xl) var(--space-md);text-align:center;">
+        <p style="margin-bottom:var(--space-md);opacity:0.8;font-size:var(--fs-sm);">&copy; 2025 – Present | Mohamed Borham · DevOps & Cloud Engineer</p>
+        <div style="display:flex;justify-content:center;gap:var(--space-lg);">
+            <a href="https://linkedin.com/in/mohammed-borham" style="color:var(--text-inverse);font-size:var(--fs-lg);transition:color 0.3s ease;" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color=''"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Mohammed-Borham" style="color:var(--text-inverse);font-size:var(--fs-lg);transition:color 0.3s ease;" target="_blank" rel="noopener noreferrer" aria-label="GitHub" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color=''"><i class="fab fa-github"></i></a>
+            <a href="mailto:borham.mohammad@gmail.com" style="color:var(--text-inverse);font-size:var(--fs-lg);transition:color 0.3s ease;" aria-label="Email" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color=''"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
     <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- ─── STRUCTURED DATA ─── ✅ Fixed location to Alexandria -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Mohamed Borham",
-        "jobTitle": "DevOps Engineer",
+        "jobTitle": "DevOps & Cloud Engineer",
         "url": "https://mohammed-borham.github.io",
         "address": {"@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "Egypt"},
         "email": "borham.mohammad@gmail.com",
         "telephone": "+201067936986",
-        "sameAs": ["https://linkedin.com/in/mohammed-borham", "https://github.com/Mohammed-Borham"],
-        "alumniOf": {"@type": "EducationalOrganization", "name": "Higher Institute of Engineering and Technology"},
-        "knowsAbout": ["AWS", "Docker", "Kubernetes", "Terraform", "Ansible", "CI/CD", "DevOps"]
+        "sameAs": [
+            "https://linkedin.com/in/mohammed-borham",
+            "https://github.com/Mohammed-Borham"
+        ],
+        "alumniOf": {"@type": "EducationalOrganization", "name": "Higher Institute of Engineering and Technology, Cairo"},
+        "knowsAbout": ["AWS", "Docker", "Kubernetes", "Terraform", "Ansible", "CI/CD", "DevOps", "GitOps", "ArgoCD", "Jenkins"]
     }
     </script>
 
     <script>
+        // ─── THEME ───
         const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const html = document.documentElement;
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const themeIcon   = document.getElementById('themeIcon');
+        const html        = document.documentElement;
+        const savedTheme  = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-theme', savedTheme);
         themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
         themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         });
+
+        // ─── MOBILE MENU ───
         function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            mobileMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
         }
         function closeMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            mobileMenu.classList.remove('active');
-            hamburger.classList.remove('active');
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.querySelector('.hamburger').classList.remove('active');
         }
         document.addEventListener('click', (e) => {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const hamburger = document.querySelector('.hamburger');
-            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
+            const menu = document.getElementById('mobileMenu');
+            const ham  = document.querySelector('.hamburger');
+            if (!ham.contains(e.target) && !menu.contains(e.target)) closeMobileMenu();
         });
+
+        // ─── SMOOTH SCROLL ───
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                closeMobileMenu();
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault(); closeMobileMenu();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const navHeight = document.querySelector('.nav-bar').offsetHeight;
-                    window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+                    const navH = document.querySelector('.nav-bar').offsetHeight;
+                    window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
                 }
             });
         });
-        function handleScrollReveal() {
-            document.querySelectorAll('.scroll-reveal').forEach(reveal => {
-                if (reveal.getBoundingClientRect().top < window.innerHeight - 150) reveal.classList.add('revealed');
-            });
-        }
+
+        // ─── SCROLL REVEAL (IntersectionObserver) ─── ✅ also fires on load
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+        // ─── BACK TO TOP ───
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             backToTop.classList.toggle('visible', window.scrollY > 300);
-            handleScrollReveal();
             updateActiveNav();
         });
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ─── ACTIVE NAV ───
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section[id]');
         function updateActiveNav() {
             let current = '';
-            sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
-            navLinks.forEach(link => { link.classList.toggle('active', link.getAttribute('href').substring(1) === current); });
+            sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href').substring(1) === current));
         }
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.skill-chip, .experience-item, .project-card').forEach(el => {
-                el.style.display = (!query || el.textContent.toLowerCase().includes(query)) ? '' : 'none';
+
+        // ─── PROJECT FILTER ─── ✅ NEW – dims non-matching cards
+        document.getElementById('filterBar').addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            const filter = e.target.dataset.filter;
+            document.querySelectorAll('.project-card').forEach(card => {
+                const tags = card.dataset.tags || '';
+                const match = filter === 'all' || tags.includes(filter);
+                card.classList.toggle('dimmed', !match);
             });
         });
-        document.addEventListener('DOMContentLoaded', () => {
-            handleScrollReveal();
-            updateActiveNav();
-            document.querySelectorAll('.skill-chip').forEach((chip, i) => {
-                chip.style.opacity = 0;
-                chip.style.transform = 'translateY(20px)';
-                setTimeout(() => { chip.style.opacity = 1; chip.style.transform = 'translateY(0)'; }, 50 * i);
-            });
-        });
-        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMobileMenu(); });
+
+        // ─── PROFILE IMAGE FALLBACK ─── ✅
+        function handleImgError() {
+            document.getElementById('profileImg').style.display = 'none';
+            const fb = document.getElementById('profileFallback');
+            fb.style.display = 'flex';
+        }
+
+        // ─── TYPING ANIMATION ─── ✅
+        const phrases = [
+            'DevOps & Cloud Engineer',
+            'CI/CD Pipeline Builder',
+            'Kubernetes Enthusiast',
+            'AWS Infrastructure Architect',
+            'Automation Advocate'
+        ];
+        let pIdx = 0, cIdx = 0, deleting = false;
+        const typingEl = document.getElementById('typingText');
+        function typeLoop() {
+            const current = phrases[pIdx];
+            if (!deleting) {
+                typingEl.textContent = current.substring(0, ++cIdx);
+                if (cIdx === current.length) { deleting = true; setTimeout(typeLoop, 2200); return; }
+            } else {
+                typingEl.textContent = current.substring(0, --cIdx);
+                if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; }
+            }
+            setTimeout(typeLoop, deleting ? 40 : 80);
+        }
+        typeLoop();
+
+        // ─── KEYBOARD SHORTCUT ───
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeMobileMenu();
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); document.getElementById('searchInput').focus(); }
         });
+
+        // ─── RESIZE ───
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMobileMenu(); });
     </script>
 </body>
 </html>
